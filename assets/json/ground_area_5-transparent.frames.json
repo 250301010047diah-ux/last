@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_5-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1280,
+    "frameHeight": 286
+  },
+  "frames": [
+    {
+      "name": "Castle ground strip",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 286
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 286
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 62
+    }
+  ]
+}

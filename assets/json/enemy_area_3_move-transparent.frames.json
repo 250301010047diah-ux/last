@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_3_move-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "spiral_crow_fly_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 38,
+        "y": 14,
+        "w": 333,
+        "h": 335
+      },
+      "anchor": {
+        "x": 205,
+        "y": 348
+      }
+    },
+    {
+      "name": "spiral_crow_fly_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 443,
+        "y": 17,
+        "w": 313,
+        "h": 321
+      },
+      "anchor": {
+        "x": 600,
+        "y": 337
+      }
+    },
+    {
+      "name": "spiral_crow_fly_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 824,
+        "y": 32,
+        "w": 323,
+        "h": 318
+      },
+      "anchor": {
+        "x": 986,
+        "y": 349
+      }
+    },
+    {
+      "name": "spiral_crow_fly_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1219,
+        "y": 20,
+        "w": 301,
+        "h": 330
+      },
+      "anchor": {
+        "x": 1370,
+        "y": 349
+      }
+    },
+    {
+      "name": "spiral_crow_fly_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1592,
+        "y": 17,
+        "w": 331,
+        "h": 334
+      },
+      "anchor": {
+        "x": 1758,
+        "y": 350
+      }
+    },
+    {
+      "name": "blade_harpy_hover_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 15,
+        "y": 384,
+        "w": 383,
+        "h": 335
+      },
+      "anchor": {
+        "x": 207,
+        "y": 718
+      }
+    },
+    {
+      "name": "blade_harpy_hover_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 425,
+        "y": 385,
+        "w": 358,
+        "h": 335
+      },
+      "anchor": {
+        "x": 604,
+        "y": 719
+      }
+    },
+    {
+      "name": "blade_harpy_hover_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 817,
+        "y": 387,
+        "w": 339,
+        "h": 335
+      },
+      "anchor": {
+        "x": 987,
+        "y": 721
+      }
+    },
+    {
+      "name": "blade_harpy_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1193,
+        "y": 384,
+        "w": 358,
+        "h": 338
+      },
+      "anchor": {
+        "x": 1372,
+        "y": 721
+      }
+    },
+    {
+      "name": "blade_harpy_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1576,
+        "y": 390,
+        "w": 376,
+        "h": 334
+      },
+      "anchor": {
+        "x": 1764,
+        "y": 723
+      }
+    },
+    {
+      "name": "living_tornado_spin_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 16,
+        "y": 747,
+        "w": 373,
+        "h": 368
+      },
+      "anchor": {
+        "x": 203,
+        "y": 1114
+      }
+    },
+    {
+      "name": "living_tornado_spin_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 416,
+        "y": 754,
+        "w": 370,
+        "h": 362
+      },
+      "anchor": {
+        "x": 601,
+        "y": 1115
+      }
+    },
+    {
+      "name": "living_tornado_spin_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 823,
+        "y": 761,
+        "w": 338,
+        "h": 354
+      },
+      "anchor": {
+        "x": 992,
+        "y": 1114
+      }
+    },
+    {
+      "name": "living_tornado_spin_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1192,
+        "y": 761,
+        "w": 359,
+        "h": 354
+      },
+      "anchor": {
+        "x": 1372,
+        "y": 1114
+      }
+    },
+    {
+      "name": "living_tornado_spin_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1586,
+        "y": 758,
+        "w": 358,
+        "h": 357
+      },
+      "anchor": {
+        "x": 1765,
+        "y": 1114
+      }
+    },
+    {
+      "name": "wind_dragon_hover_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 1140,
+        "w": 372,
+        "h": 409
+      },
+      "anchor": {
+        "x": 205,
+        "y": 1548
+      }
+    },
+    {
+      "name": "wind_dragon_hover_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 418,
+        "y": 1146,
+        "w": 358,
+        "h": 405
+      },
+      "anchor": {
+        "x": 597,
+        "y": 1550
+      }
+    },
+    {
+      "name": "wind_dragon_hover_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 816,
+        "y": 1144,
+        "w": 345,
+        "h": 407
+      },
+      "anchor": {
+        "x": 989,
+        "y": 1550
+      }
+    },
+    {
+      "name": "wind_dragon_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1191,
+        "y": 1143,
+        "w": 341,
+        "h": 411
+      },
+      "anchor": {
+        "x": 1362,
+        "y": 1553
+      }
+    },
+    {
+      "name": "wind_dragon_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1582,
+        "y": 1143,
+        "w": 368,
+        "h": 410
+      },
+      "anchor": {
+        "x": 1766,
+        "y": 1552
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "spiral_crow_fly",
+      "frames": [
+        {
+          "name": "spiral_crow_fly_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 38,
+            "y": 14,
+            "w": 333,
+            "h": 335
+          },
+          "anchor": {
+            "x": 205,
+            "y": 348
+          }
+        },
+        {
+          "name": "spiral_crow_fly_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 443,
+            "y": 17,
+            "w": 313,
+            "h": 321
+          },
+          "anchor": {
+            "x": 600,
+            "y": 337
+          }
+        },
+        {
+          "name": "spiral_crow_fly_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 824,
+            "y": 32,
+            "w": 323,
+            "h": 318
+          },
+          "anchor": {
+            "x": 986,
+            "y": 349
+          }
+        },
+        {
+          "name": "spiral_crow_fly_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1219,
+            "y": 20,
+            "w": 301,
+            "h": 330
+          },
+          "anchor": {
+            "x": 1370,
+            "y": 349
+          }
+        },
+        {
+          "name": "spiral_crow_fly_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1592,
+            "y": 17,
+            "w": 331,
+            "h": 334
+          },
+          "anchor": {
+            "x": 1758,
+            "y": 350
+          }
+        }
+      ]
+    },
+    {
+      "name": "blade_harpy_hover",
+      "frames": [
+        {
+          "name": "blade_harpy_hover_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 15,
+            "y": 384,
+            "w": 383,
+            "h": 335
+          },
+          "anchor": {
+            "x": 207,
+            "y": 718
+          }
+        },
+        {
+          "name": "blade_harpy_hover_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 425,
+            "y": 385,
+            "w": 358,
+            "h": 335
+          },
+          "anchor": {
+            "x": 604,
+            "y": 719
+          }
+        },
+        {
+          "name": "blade_harpy_hover_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 817,
+            "y": 387,
+            "w": 339,
+            "h": 335
+          },
+          "anchor": {
+            "x": 987,
+            "y": 721
+          }
+        },
+        {
+          "name": "blade_harpy_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1193,
+            "y": 384,
+            "w": 358,
+            "h": 338
+          },
+          "anchor": {
+            "x": 1372,
+            "y": 721
+          }
+        },
+        {
+          "name": "blade_harpy_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1576,
+            "y": 390,
+            "w": 376,
+            "h": 334
+          },
+          "anchor": {
+            "x": 1764,
+            "y": 723
+          }
+        }
+      ]
+    },
+    {
+      "name": "living_tornado_spin",
+      "frames": [
+        {
+          "name": "living_tornado_spin_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 16,
+            "y": 747,
+            "w": 373,
+            "h": 368
+          },
+          "anchor": {
+            "x": 203,
+            "y": 1114
+          }
+        },
+        {
+          "name": "living_tornado_spin_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 416,
+            "y": 754,
+            "w": 370,
+            "h": 362
+          },
+          "anchor": {
+            "x": 601,
+            "y": 1115
+          }
+        },
+        {
+          "name": "living_tornado_spin_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 823,
+            "y": 761,
+            "w": 338,
+            "h": 354
+          },
+          "anchor": {
+            "x": 992,
+            "y": 1114
+          }
+        },
+        {
+          "name": "living_tornado_spin_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1192,
+            "y": 761,
+            "w": 359,
+            "h": 354
+          },
+          "anchor": {
+            "x": 1372,
+            "y": 1114
+          }
+        },
+        {
+          "name": "living_tornado_spin_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1586,
+            "y": 758,
+            "w": 358,
+            "h": 357
+          },
+          "anchor": {
+            "x": 1765,
+            "y": 1114
+          }
+        }
+      ]
+    },
+    {
+      "name": "wind_dragon_hover",
+      "frames": [
+        {
+          "name": "wind_dragon_hover_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 1140,
+            "w": 372,
+            "h": 409
+          },
+          "anchor": {
+            "x": 205,
+            "y": 1548
+          }
+        },
+        {
+          "name": "wind_dragon_hover_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 418,
+            "y": 1146,
+            "w": 358,
+            "h": 405
+          },
+          "anchor": {
+            "x": 597,
+            "y": 1550
+          }
+        },
+        {
+          "name": "wind_dragon_hover_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 816,
+            "y": 1144,
+            "w": 345,
+            "h": 407
+          },
+          "anchor": {
+            "x": 989,
+            "y": 1550
+          }
+        },
+        {
+          "name": "wind_dragon_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1191,
+            "y": 1143,
+            "w": 341,
+            "h": 411
+          },
+          "anchor": {
+            "x": 1362,
+            "y": 1553
+          }
+        },
+        {
+          "name": "wind_dragon_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1582,
+            "y": 1143,
+            "w": 368,
+            "h": 410
+          },
+          "anchor": {
+            "x": 1766,
+            "y": 1552
+          }
+        }
+      ]
+    }
+  ]
+}

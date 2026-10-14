@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_7-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1265,
+    "frameHeight": 222
+  },
+  "frames": [
+    {
+      "name": "Floating ruin ground strip",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1265,
+        "h": 222
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1265,
+        "h": 222
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 3
+    }
+  ]
+}

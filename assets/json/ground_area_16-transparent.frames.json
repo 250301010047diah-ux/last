@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_16-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1274,
+    "frameHeight": 478
+  },
+  "frames": [
+    {
+      "name": "Moon bamboo ground",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1274,
+        "h": 478
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1274,
+        "h": 478
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 163
+    }
+  ]
+}

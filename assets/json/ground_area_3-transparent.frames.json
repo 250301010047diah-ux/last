@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_3-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1280,
+    "frameHeight": 226
+  },
+  "frames": [
+    {
+      "name": "Cliff ground strip",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 226
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 226
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 35
+    }
+  ]
+}

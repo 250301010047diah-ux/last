@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_16_attack-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "moon_fox_flame_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 23,
+        "y": 51,
+        "w": 337,
+        "h": 343
+      },
+      "anchor": {
+        "x": 192,
+        "y": 393
+      }
+    },
+    {
+      "name": "moon_fox_flame_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 379,
+        "y": 25,
+        "w": 351,
+        "h": 364
+      },
+      "anchor": {
+        "x": 555,
+        "y": 388
+      }
+    },
+    {
+      "name": "moon_fox_flame_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 747,
+        "y": 25,
+        "w": 427,
+        "h": 365
+      },
+      "anchor": {
+        "x": 961,
+        "y": 389
+      }
+    },
+    {
+      "name": "moon_fox_flame_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1195,
+        "y": 90,
+        "w": 399,
+        "h": 299
+      },
+      "anchor": {
+        "x": 1395,
+        "y": 388
+      }
+    },
+    {
+      "name": "moon_fox_flame_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1602,
+        "y": 51,
+        "w": 322,
+        "h": 341
+      },
+      "anchor": {
+        "x": 1763,
+        "y": 391
+      }
+    },
+    {
+      "name": "bamboo_tengu_fan_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 20,
+        "y": 442,
+        "w": 331,
+        "h": 299
+      },
+      "anchor": {
+        "x": 186,
+        "y": 740
+      }
+    },
+    {
+      "name": "bamboo_tengu_fan_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 377,
+        "y": 408,
+        "w": 366,
+        "h": 334
+      },
+      "anchor": {
+        "x": 560,
+        "y": 741
+      }
+    },
+    {
+      "name": "bamboo_tengu_fan_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 741,
+        "y": 404,
+        "w": 436,
+        "h": 338
+      },
+      "anchor": {
+        "x": 959,
+        "y": 741
+      }
+    },
+    {
+      "name": "bamboo_tengu_fan_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1177,
+        "y": 442,
+        "w": 403,
+        "h": 300
+      },
+      "anchor": {
+        "x": 1379,
+        "y": 741
+      }
+    },
+    {
+      "name": "bamboo_tengu_fan_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1590,
+        "y": 444,
+        "w": 352,
+        "h": 297
+      },
+      "anchor": {
+        "x": 1766,
+        "y": 740
+      }
+    },
+    {
+      "name": "spirit_samurai_slash_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 32,
+        "y": 771,
+        "w": 257,
+        "h": 347
+      },
+      "anchor": {
+        "x": 161,
+        "y": 1117
+      }
+    },
+    {
+      "name": "spirit_samurai_slash_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 385,
+        "y": 756,
+        "w": 356,
+        "h": 362
+      },
+      "anchor": {
+        "x": 563,
+        "y": 1117
+      }
+    },
+    {
+      "name": "spirit_samurai_slash_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 769,
+        "y": 769,
+        "w": 425,
+        "h": 348
+      },
+      "anchor": {
+        "x": 982,
+        "y": 1116
+      }
+    },
+    {
+      "name": "spirit_samurai_slash_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1195,
+        "y": 795,
+        "w": 438,
+        "h": 323
+      },
+      "anchor": {
+        "x": 1414,
+        "y": 1117
+      }
+    },
+    {
+      "name": "spirit_samurai_slash_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1642,
+        "y": 773,
+        "w": 263,
+        "h": 345
+      },
+      "anchor": {
+        "x": 1774,
+        "y": 1117
+      }
+    },
+    {
+      "name": "lunar_kitsune_moonfall_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 22,
+        "y": 1172,
+        "w": 320,
+        "h": 361
+      },
+      "anchor": {
+        "x": 182,
+        "y": 1532
+      }
+    },
+    {
+      "name": "lunar_kitsune_moonfall_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 390,
+        "y": 1146,
+        "w": 362,
+        "h": 387
+      },
+      "anchor": {
+        "x": 571,
+        "y": 1532
+      }
+    },
+    {
+      "name": "lunar_kitsune_moonfall_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 783,
+        "y": 1138,
+        "w": 365,
+        "h": 396
+      },
+      "anchor": {
+        "x": 966,
+        "y": 1533
+      }
+    },
+    {
+      "name": "lunar_kitsune_moonfall_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1173,
+        "y": 1141,
+        "w": 402,
+        "h": 417
+      },
+      "anchor": {
+        "x": 1374,
+        "y": 1557
+      }
+    },
+    {
+      "name": "lunar_kitsune_moonfall_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1601,
+        "y": 1171,
+        "w": 319,
+        "h": 363
+      },
+      "anchor": {
+        "x": 1761,
+        "y": 1533
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "moon_fox_flame",
+      "frames": [
+        {
+          "name": "moon_fox_flame_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 23,
+            "y": 51,
+            "w": 337,
+            "h": 343
+          },
+          "anchor": {
+            "x": 192,
+            "y": 393
+          }
+        },
+        {
+          "name": "moon_fox_flame_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 379,
+            "y": 25,
+            "w": 351,
+            "h": 364
+          },
+          "anchor": {
+            "x": 555,
+            "y": 388
+          }
+        },
+        {
+          "name": "moon_fox_flame_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 747,
+            "y": 25,
+            "w": 427,
+            "h": 365
+          },
+          "anchor": {
+            "x": 961,
+            "y": 389
+          }
+        },
+        {
+          "name": "moon_fox_flame_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1195,
+            "y": 90,
+            "w": 399,
+            "h": 299
+          },
+          "anchor": {
+            "x": 1395,
+            "y": 388
+          }
+        },
+        {
+          "name": "moon_fox_flame_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1602,
+            "y": 51,
+            "w": 322,
+            "h": 341
+          },
+          "anchor": {
+            "x": 1763,
+            "y": 391
+          }
+        }
+      ]
+    },
+    {
+      "name": "bamboo_tengu_fan",
+      "frames": [
+        {
+          "name": "bamboo_tengu_fan_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 20,
+            "y": 442,
+            "w": 331,
+            "h": 299
+          },
+          "anchor": {
+            "x": 186,
+            "y": 740
+          }
+        },
+        {
+          "name": "bamboo_tengu_fan_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 377,
+            "y": 408,
+            "w": 366,
+            "h": 334
+          },
+          "anchor": {
+            "x": 560,
+            "y": 741
+          }
+        },
+        {
+          "name": "bamboo_tengu_fan_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 741,
+            "y": 404,
+            "w": 436,
+            "h": 338
+          },
+          "anchor": {
+            "x": 959,
+            "y": 741
+          }
+        },
+        {
+          "name": "bamboo_tengu_fan_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1177,
+            "y": 442,
+            "w": 403,
+            "h": 300
+          },
+          "anchor": {
+            "x": 1379,
+            "y": 741
+          }
+        },
+        {
+          "name": "bamboo_tengu_fan_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1590,
+            "y": 444,
+            "w": 352,
+            "h": 297
+          },
+          "anchor": {
+            "x": 1766,
+            "y": 740
+          }
+        }
+      ]
+    },
+    {
+      "name": "spirit_samurai_slash",
+      "frames": [
+        {
+          "name": "spirit_samurai_slash_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 32,
+            "y": 771,
+            "w": 257,
+            "h": 347
+          },
+          "anchor": {
+            "x": 161,
+            "y": 1117
+          }
+        },
+        {
+          "name": "spirit_samurai_slash_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 385,
+            "y": 756,
+            "w": 356,
+            "h": 362
+          },
+          "anchor": {
+            "x": 563,
+            "y": 1117
+          }
+        },
+        {
+          "name": "spirit_samurai_slash_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 769,
+            "y": 769,
+            "w": 425,
+            "h": 348
+          },
+          "anchor": {
+            "x": 982,
+            "y": 1116
+          }
+        },
+        {
+          "name": "spirit_samurai_slash_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1195,
+            "y": 795,
+            "w": 438,
+            "h": 323
+          },
+          "anchor": {
+            "x": 1414,
+            "y": 1117
+          }
+        },
+        {
+          "name": "spirit_samurai_slash_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1642,
+            "y": 773,
+            "w": 263,
+            "h": 345
+          },
+          "anchor": {
+            "x": 1774,
+            "y": 1117
+          }
+        }
+      ]
+    },
+    {
+      "name": "lunar_kitsune_moonfall",
+      "frames": [
+        {
+          "name": "lunar_kitsune_moonfall_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 22,
+            "y": 1172,
+            "w": 320,
+            "h": 361
+          },
+          "anchor": {
+            "x": 182,
+            "y": 1532
+          }
+        },
+        {
+          "name": "lunar_kitsune_moonfall_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 390,
+            "y": 1146,
+            "w": 362,
+            "h": 387
+          },
+          "anchor": {
+            "x": 571,
+            "y": 1532
+          }
+        },
+        {
+          "name": "lunar_kitsune_moonfall_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 783,
+            "y": 1138,
+            "w": 365,
+            "h": 396
+          },
+          "anchor": {
+            "x": 966,
+            "y": 1533
+          }
+        },
+        {
+          "name": "lunar_kitsune_moonfall_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1173,
+            "y": 1141,
+            "w": 402,
+            "h": 417
+          },
+          "anchor": {
+            "x": 1374,
+            "y": 1557
+          }
+        },
+        {
+          "name": "lunar_kitsune_moonfall_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1601,
+            "y": 1171,
+            "w": 319,
+            "h": 363
+          },
+          "anchor": {
+            "x": 1761,
+            "y": 1533
+          }
+        }
+      ]
+    }
+  ]
+}

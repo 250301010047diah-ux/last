@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_9-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1280,
+    "frameHeight": 280
+  },
+  "frames": [
+    {
+      "name": "Void rift ground strip",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 280
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 280
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 79
+    }
+  ]
+}

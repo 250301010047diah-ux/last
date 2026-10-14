@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_15_move-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "bone_vulture_dive_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 32,
+        "y": 13,
+        "w": 353,
+        "h": 324
+      },
+      "anchor": {
+        "x": 209,
+        "y": 336
+      }
+    },
+    {
+      "name": "bone_vulture_dive_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 438,
+        "y": 22,
+        "w": 330,
+        "h": 321
+      },
+      "anchor": {
+        "x": 603,
+        "y": 342
+      }
+    },
+    {
+      "name": "bone_vulture_dive_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 815,
+        "y": 63,
+        "w": 329,
+        "h": 241
+      },
+      "anchor": {
+        "x": 980,
+        "y": 303
+      }
+    },
+    {
+      "name": "bone_vulture_dive_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1193,
+        "y": 63,
+        "w": 355,
+        "h": 275
+      },
+      "anchor": {
+        "x": 1371,
+        "y": 337
+      }
+    },
+    {
+      "name": "bone_vulture_dive_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1598,
+        "y": 13,
+        "w": 344,
+        "h": 323
+      },
+      "anchor": {
+        "x": 1770,
+        "y": 335
+      }
+    },
+    {
+      "name": "scarab_mummy_fall_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 39,
+        "y": 367,
+        "w": 323,
+        "h": 346
+      },
+      "anchor": {
+        "x": 201,
+        "y": 712
+      }
+    },
+    {
+      "name": "scarab_mummy_fall_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 443,
+        "y": 375,
+        "w": 333,
+        "h": 349
+      },
+      "anchor": {
+        "x": 610,
+        "y": 723
+      }
+    },
+    {
+      "name": "scarab_mummy_fall_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 854,
+        "y": 407,
+        "w": 282,
+        "h": 282
+      },
+      "anchor": {
+        "x": 995,
+        "y": 688
+      }
+    },
+    {
+      "name": "scarab_mummy_fall_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1226,
+        "y": 419,
+        "w": 307,
+        "h": 319
+      },
+      "anchor": {
+        "x": 1380,
+        "y": 737
+      }
+    },
+    {
+      "name": "scarab_mummy_fall_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1609,
+        "y": 366,
+        "w": 321,
+        "h": 350
+      },
+      "anchor": {
+        "x": 1770,
+        "y": 715
+      }
+    },
+    {
+      "name": "dune_colossus_hover_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 39,
+        "y": 753,
+        "w": 320,
+        "h": 385
+      },
+      "anchor": {
+        "x": 199,
+        "y": 1137
+      }
+    },
+    {
+      "name": "dune_colossus_hover_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 431,
+        "y": 754,
+        "w": 351,
+        "h": 384
+      },
+      "anchor": {
+        "x": 607,
+        "y": 1137
+      }
+    },
+    {
+      "name": "dune_colossus_hover_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 831,
+        "y": 751,
+        "w": 327,
+        "h": 388
+      },
+      "anchor": {
+        "x": 995,
+        "y": 1138
+      }
+    },
+    {
+      "name": "dune_colossus_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1233,
+        "y": 756,
+        "w": 327,
+        "h": 382
+      },
+      "anchor": {
+        "x": 1397,
+        "y": 1137
+      }
+    },
+    {
+      "name": "dune_colossus_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1609,
+        "y": 754,
+        "w": 318,
+        "h": 384
+      },
+      "anchor": {
+        "x": 1768,
+        "y": 1137
+      }
+    },
+    {
+      "name": "sand_emperor_hover_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 1168,
+        "w": 359,
+        "h": 383
+      },
+      "anchor": {
+        "x": 199,
+        "y": 1550
+      }
+    },
+    {
+      "name": "sand_emperor_hover_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 415,
+        "y": 1167,
+        "w": 353,
+        "h": 384
+      },
+      "anchor": {
+        "x": 592,
+        "y": 1550
+      }
+    },
+    {
+      "name": "sand_emperor_hover_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 807,
+        "y": 1168,
+        "w": 346,
+        "h": 383
+      },
+      "anchor": {
+        "x": 980,
+        "y": 1550
+      }
+    },
+    {
+      "name": "sand_emperor_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1193,
+        "y": 1168,
+        "w": 355,
+        "h": 382
+      },
+      "anchor": {
+        "x": 1371,
+        "y": 1549
+      }
+    },
+    {
+      "name": "sand_emperor_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1586,
+        "y": 1168,
+        "w": 357,
+        "h": 383
+      },
+      "anchor": {
+        "x": 1765,
+        "y": 1550
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "bone_vulture_dive",
+      "frames": [
+        {
+          "name": "bone_vulture_dive_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 32,
+            "y": 13,
+            "w": 353,
+            "h": 324
+          },
+          "anchor": {
+            "x": 209,
+            "y": 336
+          }
+        },
+        {
+          "name": "bone_vulture_dive_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 438,
+            "y": 22,
+            "w": 330,
+            "h": 321
+          },
+          "anchor": {
+            "x": 603,
+            "y": 342
+          }
+        },
+        {
+          "name": "bone_vulture_dive_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 815,
+            "y": 63,
+            "w": 329,
+            "h": 241
+          },
+          "anchor": {
+            "x": 980,
+            "y": 303
+          }
+        },
+        {
+          "name": "bone_vulture_dive_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1193,
+            "y": 63,
+            "w": 355,
+            "h": 275
+          },
+          "anchor": {
+            "x": 1371,
+            "y": 337
+          }
+        },
+        {
+          "name": "bone_vulture_dive_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1598,
+            "y": 13,
+            "w": 344,
+            "h": 323
+          },
+          "anchor": {
+            "x": 1770,
+            "y": 335
+          }
+        }
+      ]
+    },
+    {
+      "name": "scarab_mummy_fall",
+      "frames": [
+        {
+          "name": "scarab_mummy_fall_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 39,
+            "y": 367,
+            "w": 323,
+            "h": 346
+          },
+          "anchor": {
+            "x": 201,
+            "y": 712
+          }
+        },
+        {
+          "name": "scarab_mummy_fall_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 443,
+            "y": 375,
+            "w": 333,
+            "h": 349
+          },
+          "anchor": {
+            "x": 610,
+            "y": 723
+          }
+        },
+        {
+          "name": "scarab_mummy_fall_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 854,
+            "y": 407,
+            "w": 282,
+            "h": 282
+          },
+          "anchor": {
+            "x": 995,
+            "y": 688
+          }
+        },
+        {
+          "name": "scarab_mummy_fall_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1226,
+            "y": 419,
+            "w": 307,
+            "h": 319
+          },
+          "anchor": {
+            "x": 1380,
+            "y": 737
+          }
+        },
+        {
+          "name": "scarab_mummy_fall_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1609,
+            "y": 366,
+            "w": 321,
+            "h": 350
+          },
+          "anchor": {
+            "x": 1770,
+            "y": 715
+          }
+        }
+      ]
+    },
+    {
+      "name": "dune_colossus_hover",
+      "frames": [
+        {
+          "name": "dune_colossus_hover_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 39,
+            "y": 753,
+            "w": 320,
+            "h": 385
+          },
+          "anchor": {
+            "x": 199,
+            "y": 1137
+          }
+        },
+        {
+          "name": "dune_colossus_hover_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 431,
+            "y": 754,
+            "w": 351,
+            "h": 384
+          },
+          "anchor": {
+            "x": 607,
+            "y": 1137
+          }
+        },
+        {
+          "name": "dune_colossus_hover_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 831,
+            "y": 751,
+            "w": 327,
+            "h": 388
+          },
+          "anchor": {
+            "x": 995,
+            "y": 1138
+          }
+        },
+        {
+          "name": "dune_colossus_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1233,
+            "y": 756,
+            "w": 327,
+            "h": 382
+          },
+          "anchor": {
+            "x": 1397,
+            "y": 1137
+          }
+        },
+        {
+          "name": "dune_colossus_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1609,
+            "y": 754,
+            "w": 318,
+            "h": 384
+          },
+          "anchor": {
+            "x": 1768,
+            "y": 1137
+          }
+        }
+      ]
+    },
+    {
+      "name": "sand_emperor_hover",
+      "frames": [
+        {
+          "name": "sand_emperor_hover_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 1168,
+            "w": 359,
+            "h": 383
+          },
+          "anchor": {
+            "x": 199,
+            "y": 1550
+          }
+        },
+        {
+          "name": "sand_emperor_hover_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 415,
+            "y": 1167,
+            "w": 353,
+            "h": 384
+          },
+          "anchor": {
+            "x": 592,
+            "y": 1550
+          }
+        },
+        {
+          "name": "sand_emperor_hover_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 807,
+            "y": 1168,
+            "w": 346,
+            "h": 383
+          },
+          "anchor": {
+            "x": 980,
+            "y": 1550
+          }
+        },
+        {
+          "name": "sand_emperor_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1193,
+            "y": 1168,
+            "w": 355,
+            "h": 382
+          },
+          "anchor": {
+            "x": 1371,
+            "y": 1549
+          }
+        },
+        {
+          "name": "sand_emperor_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1586,
+            "y": 1168,
+            "w": 357,
+            "h": 383
+          },
+          "anchor": {
+            "x": 1765,
+            "y": 1550
+          }
+        }
+      ]
+    }
+  ]
+}

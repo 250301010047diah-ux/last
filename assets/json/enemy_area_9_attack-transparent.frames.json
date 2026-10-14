@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_9_attack-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "glitch_parasite_strike_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 47,
+        "y": 28,
+        "w": 299,
+        "h": 334
+      },
+      "anchor": {
+        "x": 197,
+        "y": 361
+      }
+    },
+    {
+      "name": "glitch_parasite_strike_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 416,
+        "y": 34,
+        "w": 320,
+        "h": 326
+      },
+      "anchor": {
+        "x": 576,
+        "y": 359
+      }
+    },
+    {
+      "name": "glitch_parasite_strike_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 810,
+        "y": 32,
+        "w": 341,
+        "h": 331
+      },
+      "anchor": {
+        "x": 981,
+        "y": 362
+      }
+    },
+    {
+      "name": "glitch_parasite_strike_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1189,
+        "y": 35,
+        "w": 423,
+        "h": 328
+      },
+      "anchor": {
+        "x": 1401,
+        "y": 362
+      }
+    },
+    {
+      "name": "glitch_parasite_strike_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1624,
+        "y": 40,
+        "w": 306,
+        "h": 322
+      },
+      "anchor": {
+        "x": 1777,
+        "y": 361
+      }
+    },
+    {
+      "name": "tracking_eye_laser_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 25,
+        "y": 395,
+        "w": 331,
+        "h": 353
+      },
+      "anchor": {
+        "x": 191,
+        "y": 747
+      }
+    },
+    {
+      "name": "tracking_eye_laser_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 418,
+        "y": 395,
+        "w": 335,
+        "h": 353
+      },
+      "anchor": {
+        "x": 586,
+        "y": 747
+      }
+    },
+    {
+      "name": "tracking_eye_laser_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 809,
+        "y": 394,
+        "w": 336,
+        "h": 354
+      },
+      "anchor": {
+        "x": 977,
+        "y": 747
+      }
+    },
+    {
+      "name": "tracking_eye_laser_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1178,
+        "y": 396,
+        "w": 421,
+        "h": 352
+      },
+      "anchor": {
+        "x": 1389,
+        "y": 747
+      }
+    },
+    {
+      "name": "tracking_eye_laser_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1614,
+        "y": 395,
+        "w": 326,
+        "h": 353
+      },
+      "anchor": {
+        "x": 1777,
+        "y": 747
+      }
+    },
+    {
+      "name": "void_squid_pull_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 770,
+        "w": 347,
+        "h": 339
+      },
+      "anchor": {
+        "x": 193,
+        "y": 1108
+      }
+    },
+    {
+      "name": "void_squid_pull_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 404,
+        "y": 764,
+        "w": 369,
+        "h": 351
+      },
+      "anchor": {
+        "x": 589,
+        "y": 1114
+      }
+    },
+    {
+      "name": "void_squid_pull_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 798,
+        "y": 768,
+        "w": 369,
+        "h": 350
+      },
+      "anchor": {
+        "x": 983,
+        "y": 1117
+      }
+    },
+    {
+      "name": "void_squid_pull_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1186,
+        "y": 760,
+        "w": 409,
+        "h": 363
+      },
+      "anchor": {
+        "x": 1391,
+        "y": 1122
+      }
+    },
+    {
+      "name": "void_squid_pull_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1610,
+        "y": 771,
+        "w": 331,
+        "h": 339
+      },
+      "anchor": {
+        "x": 1776,
+        "y": 1109
+      }
+    },
+    {
+      "name": "rift_worm_meteor_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 1146,
+        "w": 347,
+        "h": 372
+      },
+      "anchor": {
+        "x": 193,
+        "y": 1517
+      }
+    },
+    {
+      "name": "rift_worm_meteor_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 412,
+        "y": 1149,
+        "w": 353,
+        "h": 372
+      },
+      "anchor": {
+        "x": 589,
+        "y": 1520
+      }
+    },
+    {
+      "name": "rift_worm_meteor_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 800,
+        "y": 1158,
+        "w": 373,
+        "h": 354
+      },
+      "anchor": {
+        "x": 987,
+        "y": 1511
+      }
+    },
+    {
+      "name": "rift_worm_meteor_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1191,
+        "y": 1156,
+        "w": 429,
+        "h": 351
+      },
+      "anchor": {
+        "x": 1406,
+        "y": 1506
+      }
+    },
+    {
+      "name": "rift_worm_meteor_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1615,
+        "y": 1153,
+        "w": 325,
+        "h": 366
+      },
+      "anchor": {
+        "x": 1778,
+        "y": 1518
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "glitch_parasite_strike",
+      "frames": [
+        {
+          "name": "glitch_parasite_strike_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 47,
+            "y": 28,
+            "w": 299,
+            "h": 334
+          },
+          "anchor": {
+            "x": 197,
+            "y": 361
+          }
+        },
+        {
+          "name": "glitch_parasite_strike_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 416,
+            "y": 34,
+            "w": 320,
+            "h": 326
+          },
+          "anchor": {
+            "x": 576,
+            "y": 359
+          }
+        },
+        {
+          "name": "glitch_parasite_strike_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 810,
+            "y": 32,
+            "w": 341,
+            "h": 331
+          },
+          "anchor": {
+            "x": 981,
+            "y": 362
+          }
+        },
+        {
+          "name": "glitch_parasite_strike_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1189,
+            "y": 35,
+            "w": 423,
+            "h": 328
+          },
+          "anchor": {
+            "x": 1401,
+            "y": 362
+          }
+        },
+        {
+          "name": "glitch_parasite_strike_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1624,
+            "y": 40,
+            "w": 306,
+            "h": 322
+          },
+          "anchor": {
+            "x": 1777,
+            "y": 361
+          }
+        }
+      ]
+    },
+    {
+      "name": "tracking_eye_laser",
+      "frames": [
+        {
+          "name": "tracking_eye_laser_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 25,
+            "y": 395,
+            "w": 331,
+            "h": 353
+          },
+          "anchor": {
+            "x": 191,
+            "y": 747
+          }
+        },
+        {
+          "name": "tracking_eye_laser_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 418,
+            "y": 395,
+            "w": 335,
+            "h": 353
+          },
+          "anchor": {
+            "x": 586,
+            "y": 747
+          }
+        },
+        {
+          "name": "tracking_eye_laser_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 809,
+            "y": 394,
+            "w": 336,
+            "h": 354
+          },
+          "anchor": {
+            "x": 977,
+            "y": 747
+          }
+        },
+        {
+          "name": "tracking_eye_laser_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1178,
+            "y": 396,
+            "w": 421,
+            "h": 352
+          },
+          "anchor": {
+            "x": 1389,
+            "y": 747
+          }
+        },
+        {
+          "name": "tracking_eye_laser_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1614,
+            "y": 395,
+            "w": 326,
+            "h": 353
+          },
+          "anchor": {
+            "x": 1777,
+            "y": 747
+          }
+        }
+      ]
+    },
+    {
+      "name": "void_squid_pull",
+      "frames": [
+        {
+          "name": "void_squid_pull_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 770,
+            "w": 347,
+            "h": 339
+          },
+          "anchor": {
+            "x": 193,
+            "y": 1108
+          }
+        },
+        {
+          "name": "void_squid_pull_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 404,
+            "y": 764,
+            "w": 369,
+            "h": 351
+          },
+          "anchor": {
+            "x": 589,
+            "y": 1114
+          }
+        },
+        {
+          "name": "void_squid_pull_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 798,
+            "y": 768,
+            "w": 369,
+            "h": 350
+          },
+          "anchor": {
+            "x": 983,
+            "y": 1117
+          }
+        },
+        {
+          "name": "void_squid_pull_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1186,
+            "y": 760,
+            "w": 409,
+            "h": 363
+          },
+          "anchor": {
+            "x": 1391,
+            "y": 1122
+          }
+        },
+        {
+          "name": "void_squid_pull_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1610,
+            "y": 771,
+            "w": 331,
+            "h": 339
+          },
+          "anchor": {
+            "x": 1776,
+            "y": 1109
+          }
+        }
+      ]
+    },
+    {
+      "name": "rift_worm_meteor",
+      "frames": [
+        {
+          "name": "rift_worm_meteor_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 1146,
+            "w": 347,
+            "h": 372
+          },
+          "anchor": {
+            "x": 193,
+            "y": 1517
+          }
+        },
+        {
+          "name": "rift_worm_meteor_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 412,
+            "y": 1149,
+            "w": 353,
+            "h": 372
+          },
+          "anchor": {
+            "x": 589,
+            "y": 1520
+          }
+        },
+        {
+          "name": "rift_worm_meteor_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 800,
+            "y": 1158,
+            "w": 373,
+            "h": 354
+          },
+          "anchor": {
+            "x": 987,
+            "y": 1511
+          }
+        },
+        {
+          "name": "rift_worm_meteor_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1191,
+            "y": 1156,
+            "w": 429,
+            "h": 351
+          },
+          "anchor": {
+            "x": 1406,
+            "y": 1506
+          }
+        },
+        {
+          "name": "rift_worm_meteor_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1615,
+            "y": 1153,
+            "w": 325,
+            "h": 366
+          },
+          "anchor": {
+            "x": 1778,
+            "y": 1518
+          }
+        }
+      ]
+    }
+  ]
+}

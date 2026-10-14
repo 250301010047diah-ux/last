@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_13_move-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "sky_jelly_fall_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 31,
+        "y": 18,
+        "w": 303,
+        "h": 382
+      },
+      "anchor": {
+        "x": 183,
+        "y": 399
+      }
+    },
+    {
+      "name": "sky_jelly_fall_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 427,
+        "y": 47,
+        "w": 304,
+        "h": 365
+      },
+      "anchor": {
+        "x": 579,
+        "y": 411
+      }
+    },
+    {
+      "name": "sky_jelly_fall_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 818,
+        "y": 57,
+        "w": 299,
+        "h": 353
+      },
+      "anchor": {
+        "x": 968,
+        "y": 409
+      }
+    },
+    {
+      "name": "sky_jelly_fall_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1193,
+        "y": 64,
+        "w": 309,
+        "h": 340
+      },
+      "anchor": {
+        "x": 1348,
+        "y": 403
+      }
+    },
+    {
+      "name": "sky_jelly_fall_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1605,
+        "y": 22,
+        "w": 309,
+        "h": 374
+      },
+      "anchor": {
+        "x": 1760,
+        "y": 395
+      }
+    },
+    {
+      "name": "shark_rider_dive_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 410,
+        "w": 371,
+        "h": 326
+      },
+      "anchor": {
+        "x": 205,
+        "y": 735
+      }
+    },
+    {
+      "name": "shark_rider_dive_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 410,
+        "y": 398,
+        "w": 360,
+        "h": 343
+      },
+      "anchor": {
+        "x": 590,
+        "y": 740
+      }
+    },
+    {
+      "name": "shark_rider_dive_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 809,
+        "y": 419,
+        "w": 338,
+        "h": 335
+      },
+      "anchor": {
+        "x": 978,
+        "y": 753
+      }
+    },
+    {
+      "name": "shark_rider_dive_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1172,
+        "y": 450,
+        "w": 407,
+        "h": 286
+      },
+      "anchor": {
+        "x": 1376,
+        "y": 735
+      }
+    },
+    {
+      "name": "shark_rider_dive_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1590,
+        "y": 409,
+        "w": 374,
+        "h": 331
+      },
+      "anchor": {
+        "x": 1777,
+        "y": 739
+      }
+    },
+    {
+      "name": "coral_leviathan_hover_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 18,
+        "y": 757,
+        "w": 368,
+        "h": 367
+      },
+      "anchor": {
+        "x": 202,
+        "y": 1123
+      }
+    },
+    {
+      "name": "coral_leviathan_hover_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 405,
+        "y": 774,
+        "w": 351,
+        "h": 350
+      },
+      "anchor": {
+        "x": 581,
+        "y": 1123
+      }
+    },
+    {
+      "name": "coral_leviathan_hover_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 793,
+        "y": 782,
+        "w": 380,
+        "h": 339
+      },
+      "anchor": {
+        "x": 983,
+        "y": 1120
+      }
+    },
+    {
+      "name": "coral_leviathan_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1191,
+        "y": 769,
+        "w": 378,
+        "h": 353
+      },
+      "anchor": {
+        "x": 1380,
+        "y": 1121
+      }
+    },
+    {
+      "name": "coral_leviathan_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1578,
+        "y": 764,
+        "w": 370,
+        "h": 358
+      },
+      "anchor": {
+        "x": 1763,
+        "y": 1121
+      }
+    },
+    {
+      "name": "abyss_merqueen_hover_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 13,
+        "y": 1153,
+        "w": 392,
+        "h": 398
+      },
+      "anchor": {
+        "x": 209,
+        "y": 1550
+      }
+    },
+    {
+      "name": "abyss_merqueen_hover_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 399,
+        "y": 1152,
+        "w": 383,
+        "h": 386
+      },
+      "anchor": {
+        "x": 591,
+        "y": 1537
+      }
+    },
+    {
+      "name": "abyss_merqueen_hover_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 760,
+        "y": 1156,
+        "w": 411,
+        "h": 397
+      },
+      "anchor": {
+        "x": 966,
+        "y": 1552
+      }
+    },
+    {
+      "name": "abyss_merqueen_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1170,
+        "y": 1155,
+        "w": 398,
+        "h": 399
+      },
+      "anchor": {
+        "x": 1369,
+        "y": 1553
+      }
+    },
+    {
+      "name": "abyss_merqueen_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1557,
+        "y": 1151,
+        "w": 394,
+        "h": 400
+      },
+      "anchor": {
+        "x": 1754,
+        "y": 1550
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "sky_jelly_fall",
+      "frames": [
+        {
+          "name": "sky_jelly_fall_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 31,
+            "y": 18,
+            "w": 303,
+            "h": 382
+          },
+          "anchor": {
+            "x": 183,
+            "y": 399
+          }
+        },
+        {
+          "name": "sky_jelly_fall_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 427,
+            "y": 47,
+            "w": 304,
+            "h": 365
+          },
+          "anchor": {
+            "x": 579,
+            "y": 411
+          }
+        },
+        {
+          "name": "sky_jelly_fall_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 818,
+            "y": 57,
+            "w": 299,
+            "h": 353
+          },
+          "anchor": {
+            "x": 968,
+            "y": 409
+          }
+        },
+        {
+          "name": "sky_jelly_fall_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1193,
+            "y": 64,
+            "w": 309,
+            "h": 340
+          },
+          "anchor": {
+            "x": 1348,
+            "y": 403
+          }
+        },
+        {
+          "name": "sky_jelly_fall_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1605,
+            "y": 22,
+            "w": 309,
+            "h": 374
+          },
+          "anchor": {
+            "x": 1760,
+            "y": 395
+          }
+        }
+      ]
+    },
+    {
+      "name": "shark_rider_dive",
+      "frames": [
+        {
+          "name": "shark_rider_dive_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 410,
+            "w": 371,
+            "h": 326
+          },
+          "anchor": {
+            "x": 205,
+            "y": 735
+          }
+        },
+        {
+          "name": "shark_rider_dive_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 410,
+            "y": 398,
+            "w": 360,
+            "h": 343
+          },
+          "anchor": {
+            "x": 590,
+            "y": 740
+          }
+        },
+        {
+          "name": "shark_rider_dive_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 809,
+            "y": 419,
+            "w": 338,
+            "h": 335
+          },
+          "anchor": {
+            "x": 978,
+            "y": 753
+          }
+        },
+        {
+          "name": "shark_rider_dive_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1172,
+            "y": 450,
+            "w": 407,
+            "h": 286
+          },
+          "anchor": {
+            "x": 1376,
+            "y": 735
+          }
+        },
+        {
+          "name": "shark_rider_dive_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1590,
+            "y": 409,
+            "w": 374,
+            "h": 331
+          },
+          "anchor": {
+            "x": 1777,
+            "y": 739
+          }
+        }
+      ]
+    },
+    {
+      "name": "coral_leviathan_hover",
+      "frames": [
+        {
+          "name": "coral_leviathan_hover_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 18,
+            "y": 757,
+            "w": 368,
+            "h": 367
+          },
+          "anchor": {
+            "x": 202,
+            "y": 1123
+          }
+        },
+        {
+          "name": "coral_leviathan_hover_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 405,
+            "y": 774,
+            "w": 351,
+            "h": 350
+          },
+          "anchor": {
+            "x": 581,
+            "y": 1123
+          }
+        },
+        {
+          "name": "coral_leviathan_hover_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 793,
+            "y": 782,
+            "w": 380,
+            "h": 339
+          },
+          "anchor": {
+            "x": 983,
+            "y": 1120
+          }
+        },
+        {
+          "name": "coral_leviathan_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1191,
+            "y": 769,
+            "w": 378,
+            "h": 353
+          },
+          "anchor": {
+            "x": 1380,
+            "y": 1121
+          }
+        },
+        {
+          "name": "coral_leviathan_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1578,
+            "y": 764,
+            "w": 370,
+            "h": 358
+          },
+          "anchor": {
+            "x": 1763,
+            "y": 1121
+          }
+        }
+      ]
+    },
+    {
+      "name": "abyss_merqueen_hover",
+      "frames": [
+        {
+          "name": "abyss_merqueen_hover_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 13,
+            "y": 1153,
+            "w": 392,
+            "h": 398
+          },
+          "anchor": {
+            "x": 209,
+            "y": 1550
+          }
+        },
+        {
+          "name": "abyss_merqueen_hover_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 399,
+            "y": 1152,
+            "w": 383,
+            "h": 386
+          },
+          "anchor": {
+            "x": 591,
+            "y": 1537
+          }
+        },
+        {
+          "name": "abyss_merqueen_hover_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 760,
+            "y": 1156,
+            "w": 411,
+            "h": 397
+          },
+          "anchor": {
+            "x": 966,
+            "y": 1552
+          }
+        },
+        {
+          "name": "abyss_merqueen_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1170,
+            "y": 1155,
+            "w": 398,
+            "h": 399
+          },
+          "anchor": {
+            "x": 1369,
+            "y": 1553
+          }
+        },
+        {
+          "name": "abyss_merqueen_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1557,
+            "y": 1151,
+            "w": 394,
+            "h": 400
+          },
+          "anchor": {
+            "x": 1754,
+            "y": 1550
+          }
+        }
+      ]
+    }
+  ]
+}

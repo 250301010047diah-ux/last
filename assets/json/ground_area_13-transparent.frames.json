@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_13-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1253,
+    "frameHeight": 385
+  },
+  "frames": [
+    {
+      "name": "Sky ocean ground",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1253,
+        "h": 385
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1253,
+        "h": 385
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 79
+    }
+  ]
+}

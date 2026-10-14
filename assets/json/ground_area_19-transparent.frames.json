@@ -1,0 +1,29 @@
+{
+  "image": "/generated-assets/ground_area_19-transparent.webp",
+  "grid": {
+    "cols": 1,
+    "rows": 1,
+    "frameWidth": 1254,
+    "frameHeight": 347
+  },
+  "frames": [
+    {
+      "name": "World tree ground",
+      "source": {
+        "x": 0,
+        "y": 0,
+        "w": 1254,
+        "h": 347
+      },
+      "content": {
+        "x": 0,
+        "y": 0,
+        "w": 1254,
+        "h": 347
+      },
+      "anchor": null,
+      "surfaceEdge": "top",
+      "surfaceY": 44
+    }
+  ]
+}

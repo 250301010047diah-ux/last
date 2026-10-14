@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_19_move-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "seed_beast_fall_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 38,
+        "y": 18,
+        "w": 321,
+        "h": 280
+      },
+      "anchor": {
+        "x": 199,
+        "y": 297
+      }
+    },
+    {
+      "name": "seed_beast_fall_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 442,
+        "y": 42,
+        "w": 323,
+        "h": 309
+      },
+      "anchor": {
+        "x": 604,
+        "y": 350
+      }
+    },
+    {
+      "name": "seed_beast_fall_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 852,
+        "y": 67,
+        "w": 268,
+        "h": 272
+      },
+      "anchor": {
+        "x": 986,
+        "y": 338
+      }
+    },
+    {
+      "name": "seed_beast_fall_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1203,
+        "y": 90,
+        "w": 360,
+        "h": 261
+      },
+      "anchor": {
+        "x": 1383,
+        "y": 350
+      }
+    },
+    {
+      "name": "seed_beast_fall_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1607,
+        "y": 35,
+        "w": 326,
+        "h": 263
+      },
+      "anchor": {
+        "x": 1770,
+        "y": 297
+      }
+    },
+    {
+      "name": "root_drake_dive_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 18,
+        "y": 362,
+        "w": 370,
+        "h": 335
+      },
+      "anchor": {
+        "x": 203,
+        "y": 696
+      }
+    },
+    {
+      "name": "root_drake_dive_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 426,
+        "y": 401,
+        "w": 346,
+        "h": 345
+      },
+      "anchor": {
+        "x": 599,
+        "y": 745
+      }
+    },
+    {
+      "name": "root_drake_dive_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 800,
+        "y": 397,
+        "w": 378,
+        "h": 349
+      },
+      "anchor": {
+        "x": 989,
+        "y": 745
+      }
+    },
+    {
+      "name": "root_drake_dive_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1200,
+        "y": 392,
+        "w": 332,
+        "h": 357
+      },
+      "anchor": {
+        "x": 1366,
+        "y": 748
+      }
+    },
+    {
+      "name": "root_drake_dive_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1585,
+        "y": 369,
+        "w": 364,
+        "h": 344
+      },
+      "anchor": {
+        "x": 1767,
+        "y": 712
+      }
+    },
+    {
+      "name": "ancient_ent_hover_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 21,
+        "y": 765,
+        "w": 371,
+        "h": 353
+      },
+      "anchor": {
+        "x": 207,
+        "y": 1117
+      }
+    },
+    {
+      "name": "ancient_ent_hover_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 412,
+        "y": 781,
+        "w": 369,
+        "h": 336
+      },
+      "anchor": {
+        "x": 597,
+        "y": 1116
+      }
+    },
+    {
+      "name": "ancient_ent_hover_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 826,
+        "y": 769,
+        "w": 321,
+        "h": 349
+      },
+      "anchor": {
+        "x": 987,
+        "y": 1117
+      }
+    },
+    {
+      "name": "ancient_ent_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1201,
+        "y": 793,
+        "w": 367,
+        "h": 330
+      },
+      "anchor": {
+        "x": 1385,
+        "y": 1122
+      }
+    },
+    {
+      "name": "ancient_ent_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1586,
+        "y": 769,
+        "w": 368,
+        "h": 347
+      },
+      "anchor": {
+        "x": 1770,
+        "y": 1115
+      }
+    },
+    {
+      "name": "world_tree_avatar_hover_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 33,
+        "y": 1133,
+        "w": 325,
+        "h": 428
+      },
+      "anchor": {
+        "x": 196,
+        "y": 1560
+      }
+    },
+    {
+      "name": "world_tree_avatar_hover_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 431,
+        "y": 1135,
+        "w": 320,
+        "h": 423
+      },
+      "anchor": {
+        "x": 591,
+        "y": 1557
+      }
+    },
+    {
+      "name": "world_tree_avatar_hover_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 813,
+        "y": 1121,
+        "w": 332,
+        "h": 440
+      },
+      "anchor": {
+        "x": 979,
+        "y": 1560
+      }
+    },
+    {
+      "name": "world_tree_avatar_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1203,
+        "y": 1142,
+        "w": 358,
+        "h": 413
+      },
+      "anchor": {
+        "x": 1382,
+        "y": 1554
+      }
+    },
+    {
+      "name": "world_tree_avatar_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1615,
+        "y": 1137,
+        "w": 324,
+        "h": 424
+      },
+      "anchor": {
+        "x": 1777,
+        "y": 1560
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "seed_beast_fall",
+      "frames": [
+        {
+          "name": "seed_beast_fall_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 38,
+            "y": 18,
+            "w": 321,
+            "h": 280
+          },
+          "anchor": {
+            "x": 199,
+            "y": 297
+          }
+        },
+        {
+          "name": "seed_beast_fall_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 442,
+            "y": 42,
+            "w": 323,
+            "h": 309
+          },
+          "anchor": {
+            "x": 604,
+            "y": 350
+          }
+        },
+        {
+          "name": "seed_beast_fall_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 852,
+            "y": 67,
+            "w": 268,
+            "h": 272
+          },
+          "anchor": {
+            "x": 986,
+            "y": 338
+          }
+        },
+        {
+          "name": "seed_beast_fall_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1203,
+            "y": 90,
+            "w": 360,
+            "h": 261
+          },
+          "anchor": {
+            "x": 1383,
+            "y": 350
+          }
+        },
+        {
+          "name": "seed_beast_fall_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1607,
+            "y": 35,
+            "w": 326,
+            "h": 263
+          },
+          "anchor": {
+            "x": 1770,
+            "y": 297
+          }
+        }
+      ]
+    },
+    {
+      "name": "root_drake_dive",
+      "frames": [
+        {
+          "name": "root_drake_dive_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 18,
+            "y": 362,
+            "w": 370,
+            "h": 335
+          },
+          "anchor": {
+            "x": 203,
+            "y": 696
+          }
+        },
+        {
+          "name": "root_drake_dive_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 426,
+            "y": 401,
+            "w": 346,
+            "h": 345
+          },
+          "anchor": {
+            "x": 599,
+            "y": 745
+          }
+        },
+        {
+          "name": "root_drake_dive_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 800,
+            "y": 397,
+            "w": 378,
+            "h": 349
+          },
+          "anchor": {
+            "x": 989,
+            "y": 745
+          }
+        },
+        {
+          "name": "root_drake_dive_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1200,
+            "y": 392,
+            "w": 332,
+            "h": 357
+          },
+          "anchor": {
+            "x": 1366,
+            "y": 748
+          }
+        },
+        {
+          "name": "root_drake_dive_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1585,
+            "y": 369,
+            "w": 364,
+            "h": 344
+          },
+          "anchor": {
+            "x": 1767,
+            "y": 712
+          }
+        }
+      ]
+    },
+    {
+      "name": "ancient_ent_hover",
+      "frames": [
+        {
+          "name": "ancient_ent_hover_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 21,
+            "y": 765,
+            "w": 371,
+            "h": 353
+          },
+          "anchor": {
+            "x": 207,
+            "y": 1117
+          }
+        },
+        {
+          "name": "ancient_ent_hover_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 412,
+            "y": 781,
+            "w": 369,
+            "h": 336
+          },
+          "anchor": {
+            "x": 597,
+            "y": 1116
+          }
+        },
+        {
+          "name": "ancient_ent_hover_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 826,
+            "y": 769,
+            "w": 321,
+            "h": 349
+          },
+          "anchor": {
+            "x": 987,
+            "y": 1117
+          }
+        },
+        {
+          "name": "ancient_ent_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1201,
+            "y": 793,
+            "w": 367,
+            "h": 330
+          },
+          "anchor": {
+            "x": 1385,
+            "y": 1122
+          }
+        },
+        {
+          "name": "ancient_ent_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1586,
+            "y": 769,
+            "w": 368,
+            "h": 347
+          },
+          "anchor": {
+            "x": 1770,
+            "y": 1115
+          }
+        }
+      ]
+    },
+    {
+      "name": "world_tree_avatar_hover",
+      "frames": [
+        {
+          "name": "world_tree_avatar_hover_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 33,
+            "y": 1133,
+            "w": 325,
+            "h": 428
+          },
+          "anchor": {
+            "x": 196,
+            "y": 1560
+          }
+        },
+        {
+          "name": "world_tree_avatar_hover_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 431,
+            "y": 1135,
+            "w": 320,
+            "h": 423
+          },
+          "anchor": {
+            "x": 591,
+            "y": 1557
+          }
+        },
+        {
+          "name": "world_tree_avatar_hover_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 813,
+            "y": 1121,
+            "w": 332,
+            "h": 440
+          },
+          "anchor": {
+            "x": 979,
+            "y": 1560
+          }
+        },
+        {
+          "name": "world_tree_avatar_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1203,
+            "y": 1142,
+            "w": 358,
+            "h": 413
+          },
+          "anchor": {
+            "x": 1382,
+            "y": 1554
+          }
+        },
+        {
+          "name": "world_tree_avatar_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1615,
+            "y": 1137,
+            "w": 324,
+            "h": 424
+          },
+          "anchor": {
+            "x": 1777,
+            "y": 1560
+          }
+        }
+      ]
+    }
+  ]
+}

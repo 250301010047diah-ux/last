@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_4_move-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "poison_spore_fall_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 79,
+        "y": 24,
+        "w": 246,
+        "h": 346
+      },
+      "anchor": {
+        "x": 202,
+        "y": 369
+      }
+    },
+    {
+      "name": "poison_spore_fall_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 479,
+        "y": 47,
+        "w": 245,
+        "h": 323
+      },
+      "anchor": {
+        "x": 602,
+        "y": 369
+      }
+    },
+    {
+      "name": "poison_spore_fall_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 862,
+        "y": 35,
+        "w": 248,
+        "h": 334
+      },
+      "anchor": {
+        "x": 986,
+        "y": 368
+      }
+    },
+    {
+      "name": "poison_spore_fall_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1254,
+        "y": 32,
+        "w": 249,
+        "h": 340
+      },
+      "anchor": {
+        "x": 1379,
+        "y": 371
+      }
+    },
+    {
+      "name": "poison_spore_fall_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1639,
+        "y": 33,
+        "w": 275,
+        "h": 339
+      },
+      "anchor": {
+        "x": 1777,
+        "y": 371
+      }
+    },
+    {
+      "name": "mutant_frog_fall_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 65,
+        "y": 416,
+        "w": 319,
+        "h": 285
+      },
+      "anchor": {
+        "x": 225,
+        "y": 700
+      }
+    },
+    {
+      "name": "mutant_frog_fall_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 466,
+        "y": 402,
+        "w": 247,
+        "h": 318
+      },
+      "anchor": {
+        "x": 590,
+        "y": 719
+      }
+    },
+    {
+      "name": "mutant_frog_fall_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 827,
+        "y": 405,
+        "w": 325,
+        "h": 333
+      },
+      "anchor": {
+        "x": 990,
+        "y": 737
+      }
+    },
+    {
+      "name": "mutant_frog_fall_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1211,
+        "y": 441,
+        "w": 309,
+        "h": 266
+      },
+      "anchor": {
+        "x": 1366,
+        "y": 706
+      }
+    },
+    {
+      "name": "mutant_frog_fall_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1598,
+        "y": 489,
+        "w": 332,
+        "h": 236
+      },
+      "anchor": {
+        "x": 1764,
+        "y": 724
+      }
+    },
+    {
+      "name": "tongue_flower_hover_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 56,
+        "y": 764,
+        "w": 295,
+        "h": 362
+      },
+      "anchor": {
+        "x": 204,
+        "y": 1125
+      }
+    },
+    {
+      "name": "tongue_flower_hover_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 442,
+        "y": 764,
+        "w": 300,
+        "h": 349
+      },
+      "anchor": {
+        "x": 592,
+        "y": 1112
+      }
+    },
+    {
+      "name": "tongue_flower_hover_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 840,
+        "y": 764,
+        "w": 291,
+        "h": 356
+      },
+      "anchor": {
+        "x": 986,
+        "y": 1119
+      }
+    },
+    {
+      "name": "tongue_flower_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1238,
+        "y": 764,
+        "w": 302,
+        "h": 351
+      },
+      "anchor": {
+        "x": 1389,
+        "y": 1114
+      }
+    },
+    {
+      "name": "tongue_flower_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1628,
+        "y": 764,
+        "w": 302,
+        "h": 340
+      },
+      "anchor": {
+        "x": 1779,
+        "y": 1103
+      }
+    },
+    {
+      "name": "swamp_slime_king_hover_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 21,
+        "y": 1170,
+        "w": 367,
+        "h": 369
+      },
+      "anchor": {
+        "x": 205,
+        "y": 1538
+      }
+    },
+    {
+      "name": "swamp_slime_king_hover_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 450,
+        "y": 1168,
+        "w": 324,
+        "h": 362
+      },
+      "anchor": {
+        "x": 612,
+        "y": 1529
+      }
+    },
+    {
+      "name": "swamp_slime_king_hover_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 814,
+        "y": 1154,
+        "w": 347,
+        "h": 385
+      },
+      "anchor": {
+        "x": 988,
+        "y": 1538
+      }
+    },
+    {
+      "name": "swamp_slime_king_hover_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1202,
+        "y": 1168,
+        "w": 333,
+        "h": 367
+      },
+      "anchor": {
+        "x": 1369,
+        "y": 1534
+      }
+    },
+    {
+      "name": "swamp_slime_king_hover_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1585,
+        "y": 1177,
+        "w": 363,
+        "h": 362
+      },
+      "anchor": {
+        "x": 1767,
+        "y": 1538
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "poison_spore_fall",
+      "frames": [
+        {
+          "name": "poison_spore_fall_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 79,
+            "y": 24,
+            "w": 246,
+            "h": 346
+          },
+          "anchor": {
+            "x": 202,
+            "y": 369
+          }
+        },
+        {
+          "name": "poison_spore_fall_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 479,
+            "y": 47,
+            "w": 245,
+            "h": 323
+          },
+          "anchor": {
+            "x": 602,
+            "y": 369
+          }
+        },
+        {
+          "name": "poison_spore_fall_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 862,
+            "y": 35,
+            "w": 248,
+            "h": 334
+          },
+          "anchor": {
+            "x": 986,
+            "y": 368
+          }
+        },
+        {
+          "name": "poison_spore_fall_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1254,
+            "y": 32,
+            "w": 249,
+            "h": 340
+          },
+          "anchor": {
+            "x": 1379,
+            "y": 371
+          }
+        },
+        {
+          "name": "poison_spore_fall_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1639,
+            "y": 33,
+            "w": 275,
+            "h": 339
+          },
+          "anchor": {
+            "x": 1777,
+            "y": 371
+          }
+        }
+      ]
+    },
+    {
+      "name": "mutant_frog_fall",
+      "frames": [
+        {
+          "name": "mutant_frog_fall_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 65,
+            "y": 416,
+            "w": 319,
+            "h": 285
+          },
+          "anchor": {
+            "x": 225,
+            "y": 700
+          }
+        },
+        {
+          "name": "mutant_frog_fall_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 466,
+            "y": 402,
+            "w": 247,
+            "h": 318
+          },
+          "anchor": {
+            "x": 590,
+            "y": 719
+          }
+        },
+        {
+          "name": "mutant_frog_fall_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 827,
+            "y": 405,
+            "w": 325,
+            "h": 333
+          },
+          "anchor": {
+            "x": 990,
+            "y": 737
+          }
+        },
+        {
+          "name": "mutant_frog_fall_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1211,
+            "y": 441,
+            "w": 309,
+            "h": 266
+          },
+          "anchor": {
+            "x": 1366,
+            "y": 706
+          }
+        },
+        {
+          "name": "mutant_frog_fall_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1598,
+            "y": 489,
+            "w": 332,
+            "h": 236
+          },
+          "anchor": {
+            "x": 1764,
+            "y": 724
+          }
+        }
+      ]
+    },
+    {
+      "name": "tongue_flower_hover",
+      "frames": [
+        {
+          "name": "tongue_flower_hover_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 56,
+            "y": 764,
+            "w": 295,
+            "h": 362
+          },
+          "anchor": {
+            "x": 204,
+            "y": 1125
+          }
+        },
+        {
+          "name": "tongue_flower_hover_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 442,
+            "y": 764,
+            "w": 300,
+            "h": 349
+          },
+          "anchor": {
+            "x": 592,
+            "y": 1112
+          }
+        },
+        {
+          "name": "tongue_flower_hover_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 840,
+            "y": 764,
+            "w": 291,
+            "h": 356
+          },
+          "anchor": {
+            "x": 986,
+            "y": 1119
+          }
+        },
+        {
+          "name": "tongue_flower_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1238,
+            "y": 764,
+            "w": 302,
+            "h": 351
+          },
+          "anchor": {
+            "x": 1389,
+            "y": 1114
+          }
+        },
+        {
+          "name": "tongue_flower_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1628,
+            "y": 764,
+            "w": 302,
+            "h": 340
+          },
+          "anchor": {
+            "x": 1779,
+            "y": 1103
+          }
+        }
+      ]
+    },
+    {
+      "name": "swamp_slime_king_hover",
+      "frames": [
+        {
+          "name": "swamp_slime_king_hover_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 21,
+            "y": 1170,
+            "w": 367,
+            "h": 369
+          },
+          "anchor": {
+            "x": 205,
+            "y": 1538
+          }
+        },
+        {
+          "name": "swamp_slime_king_hover_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 450,
+            "y": 1168,
+            "w": 324,
+            "h": 362
+          },
+          "anchor": {
+            "x": 612,
+            "y": 1529
+          }
+        },
+        {
+          "name": "swamp_slime_king_hover_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 814,
+            "y": 1154,
+            "w": 347,
+            "h": 385
+          },
+          "anchor": {
+            "x": 988,
+            "y": 1538
+          }
+        },
+        {
+          "name": "swamp_slime_king_hover_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1202,
+            "y": 1168,
+            "w": 333,
+            "h": 367
+          },
+          "anchor": {
+            "x": 1369,
+            "y": 1534
+          }
+        },
+        {
+          "name": "swamp_slime_king_hover_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1585,
+            "y": 1177,
+            "w": 363,
+            "h": 362
+          },
+          "anchor": {
+            "x": 1767,
+            "y": 1538
+          }
+        }
+      ]
+    }
+  ]
+}

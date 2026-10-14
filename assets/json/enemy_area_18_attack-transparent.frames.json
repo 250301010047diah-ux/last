@@ -1,0 +1,793 @@
+{
+  "image": "/generated-assets/enemy_area_18_attack-transparent.webp",
+  "grid": {
+    "cols": 5,
+    "rows": 4,
+    "frameWidth": 320,
+    "frameHeight": 320
+  },
+  "frames": [
+    {
+      "name": "blood_gargoyle_claw_1",
+      "source": {
+        "x": 56,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 16,
+        "y": 27,
+        "w": 345,
+        "h": 330
+      },
+      "anchor": {
+        "x": 189,
+        "y": 356
+      }
+    },
+    {
+      "name": "blood_gargoyle_claw_2",
+      "source": {
+        "x": 440,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 402,
+        "y": 25,
+        "w": 379,
+        "h": 317
+      },
+      "anchor": {
+        "x": 592,
+        "y": 341
+      }
+    },
+    {
+      "name": "blood_gargoyle_claw_3",
+      "source": {
+        "x": 824,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 796,
+        "y": 34,
+        "w": 398,
+        "h": 309
+      },
+      "anchor": {
+        "x": 995,
+        "y": 342
+      }
+    },
+    {
+      "name": "blood_gargoyle_claw_4",
+      "source": {
+        "x": 1208,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1194,
+        "y": 34,
+        "w": 352,
+        "h": 321
+      },
+      "anchor": {
+        "x": 1370,
+        "y": 354
+      }
+    },
+    {
+      "name": "blood_gargoyle_claw_5",
+      "source": {
+        "x": 1592,
+        "y": 56,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1578,
+        "y": 30,
+        "w": 336,
+        "h": 326
+      },
+      "anchor": {
+        "x": 1746,
+        "y": 355
+      }
+    },
+    {
+      "name": "rifle_revenant_shot_1",
+      "source": {
+        "x": 56,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 19,
+        "y": 404,
+        "w": 383,
+        "h": 333
+      },
+      "anchor": {
+        "x": 211,
+        "y": 736
+      }
+    },
+    {
+      "name": "rifle_revenant_shot_2",
+      "source": {
+        "x": 440,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 393,
+        "y": 417,
+        "w": 397,
+        "h": 320
+      },
+      "anchor": {
+        "x": 592,
+        "y": 736
+      }
+    },
+    {
+      "name": "rifle_revenant_shot_3",
+      "source": {
+        "x": 824,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 756,
+        "y": 407,
+        "w": 520,
+        "h": 329
+      },
+      "anchor": {
+        "x": 1016,
+        "y": 735
+      }
+    },
+    {
+      "name": "rifle_revenant_shot_4",
+      "source": {
+        "x": 1208,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1187,
+        "y": 413,
+        "w": 426,
+        "h": 323
+      },
+      "anchor": {
+        "x": 1400,
+        "y": 735
+      }
+    },
+    {
+      "name": "rifle_revenant_shot_5",
+      "source": {
+        "x": 1592,
+        "y": 440,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1571,
+        "y": 405,
+        "w": 391,
+        "h": 331
+      },
+      "anchor": {
+        "x": 1767,
+        "y": 735
+      }
+    },
+    {
+      "name": "vampire_knight_dive_1",
+      "source": {
+        "x": 56,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 16,
+        "y": 769,
+        "w": 363,
+        "h": 321
+      },
+      "anchor": {
+        "x": 198,
+        "y": 1089
+      }
+    },
+    {
+      "name": "vampire_knight_dive_2",
+      "source": {
+        "x": 440,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 392,
+        "y": 848,
+        "w": 383,
+        "h": 241
+      },
+      "anchor": {
+        "x": 584,
+        "y": 1088
+      }
+    },
+    {
+      "name": "vampire_knight_dive_3",
+      "source": {
+        "x": 824,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 748,
+        "y": 769,
+        "w": 535,
+        "h": 431
+      },
+      "anchor": {
+        "x": 1016,
+        "y": 1199
+      }
+    },
+    {
+      "name": "vampire_knight_dive_4",
+      "source": {
+        "x": 1208,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1196,
+        "y": 863,
+        "w": 374,
+        "h": 231
+      },
+      "anchor": {
+        "x": 1383,
+        "y": 1093
+      }
+    },
+    {
+      "name": "vampire_knight_dive_5",
+      "source": {
+        "x": 1592,
+        "y": 824,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1588,
+        "y": 769,
+        "w": 372,
+        "h": 322
+      },
+      "anchor": {
+        "x": 1774,
+        "y": 1090
+      }
+    },
+    {
+      "name": "crimson_countess_bloodmoon_1",
+      "source": {
+        "x": 56,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 31,
+        "y": 1110,
+        "w": 322,
+        "h": 433
+      },
+      "anchor": {
+        "x": 192,
+        "y": 1542
+      }
+    },
+    {
+      "name": "crimson_countess_bloodmoon_2",
+      "source": {
+        "x": 440,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 432,
+        "y": 1089,
+        "w": 301,
+        "h": 453
+      },
+      "anchor": {
+        "x": 583,
+        "y": 1541
+      }
+    },
+    {
+      "name": "crimson_countess_bloodmoon_3",
+      "source": {
+        "x": 824,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 765,
+        "y": 1075,
+        "w": 418,
+        "h": 463
+      },
+      "anchor": {
+        "x": 974,
+        "y": 1537
+      }
+    },
+    {
+      "name": "crimson_countess_bloodmoon_4",
+      "source": {
+        "x": 1208,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1202,
+        "y": 1114,
+        "w": 355,
+        "h": 429
+      },
+      "anchor": {
+        "x": 1380,
+        "y": 1542
+      }
+    },
+    {
+      "name": "crimson_countess_bloodmoon_5",
+      "source": {
+        "x": 1592,
+        "y": 1208,
+        "w": 320,
+        "h": 320
+      },
+      "content": {
+        "x": 1602,
+        "y": 1109,
+        "w": 336,
+        "h": 433
+      },
+      "anchor": {
+        "x": 1770,
+        "y": 1541
+      }
+    }
+  ],
+  "animations": [
+    {
+      "name": "blood_gargoyle_claw",
+      "frames": [
+        {
+          "name": "blood_gargoyle_claw_1",
+          "source": {
+            "x": 56,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 16,
+            "y": 27,
+            "w": 345,
+            "h": 330
+          },
+          "anchor": {
+            "x": 189,
+            "y": 356
+          }
+        },
+        {
+          "name": "blood_gargoyle_claw_2",
+          "source": {
+            "x": 440,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 402,
+            "y": 25,
+            "w": 379,
+            "h": 317
+          },
+          "anchor": {
+            "x": 592,
+            "y": 341
+          }
+        },
+        {
+          "name": "blood_gargoyle_claw_3",
+          "source": {
+            "x": 824,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 796,
+            "y": 34,
+            "w": 398,
+            "h": 309
+          },
+          "anchor": {
+            "x": 995,
+            "y": 342
+          }
+        },
+        {
+          "name": "blood_gargoyle_claw_4",
+          "source": {
+            "x": 1208,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1194,
+            "y": 34,
+            "w": 352,
+            "h": 321
+          },
+          "anchor": {
+            "x": 1370,
+            "y": 354
+          }
+        },
+        {
+          "name": "blood_gargoyle_claw_5",
+          "source": {
+            "x": 1592,
+            "y": 56,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1578,
+            "y": 30,
+            "w": 336,
+            "h": 326
+          },
+          "anchor": {
+            "x": 1746,
+            "y": 355
+          }
+        }
+      ]
+    },
+    {
+      "name": "rifle_revenant_shot",
+      "frames": [
+        {
+          "name": "rifle_revenant_shot_1",
+          "source": {
+            "x": 56,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 19,
+            "y": 404,
+            "w": 383,
+            "h": 333
+          },
+          "anchor": {
+            "x": 211,
+            "y": 736
+          }
+        },
+        {
+          "name": "rifle_revenant_shot_2",
+          "source": {
+            "x": 440,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 393,
+            "y": 417,
+            "w": 397,
+            "h": 320
+          },
+          "anchor": {
+            "x": 592,
+            "y": 736
+          }
+        },
+        {
+          "name": "rifle_revenant_shot_3",
+          "source": {
+            "x": 824,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 756,
+            "y": 407,
+            "w": 520,
+            "h": 329
+          },
+          "anchor": {
+            "x": 1016,
+            "y": 735
+          }
+        },
+        {
+          "name": "rifle_revenant_shot_4",
+          "source": {
+            "x": 1208,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1187,
+            "y": 413,
+            "w": 426,
+            "h": 323
+          },
+          "anchor": {
+            "x": 1400,
+            "y": 735
+          }
+        },
+        {
+          "name": "rifle_revenant_shot_5",
+          "source": {
+            "x": 1592,
+            "y": 440,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1571,
+            "y": 405,
+            "w": 391,
+            "h": 331
+          },
+          "anchor": {
+            "x": 1767,
+            "y": 735
+          }
+        }
+      ]
+    },
+    {
+      "name": "vampire_knight_dive",
+      "frames": [
+        {
+          "name": "vampire_knight_dive_1",
+          "source": {
+            "x": 56,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 16,
+            "y": 769,
+            "w": 363,
+            "h": 321
+          },
+          "anchor": {
+            "x": 198,
+            "y": 1089
+          }
+        },
+        {
+          "name": "vampire_knight_dive_2",
+          "source": {
+            "x": 440,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 392,
+            "y": 848,
+            "w": 383,
+            "h": 241
+          },
+          "anchor": {
+            "x": 584,
+            "y": 1088
+          }
+        },
+        {
+          "name": "vampire_knight_dive_3",
+          "source": {
+            "x": 824,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 748,
+            "y": 769,
+            "w": 535,
+            "h": 431
+          },
+          "anchor": {
+            "x": 1016,
+            "y": 1199
+          }
+        },
+        {
+          "name": "vampire_knight_dive_4",
+          "source": {
+            "x": 1208,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1196,
+            "y": 863,
+            "w": 374,
+            "h": 231
+          },
+          "anchor": {
+            "x": 1383,
+            "y": 1093
+          }
+        },
+        {
+          "name": "vampire_knight_dive_5",
+          "source": {
+            "x": 1592,
+            "y": 824,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1588,
+            "y": 769,
+            "w": 372,
+            "h": 322
+          },
+          "anchor": {
+            "x": 1774,
+            "y": 1090
+          }
+        }
+      ]
+    },
+    {
+      "name": "crimson_countess_bloodmoon",
+      "frames": [
+        {
+          "name": "crimson_countess_bloodmoon_1",
+          "source": {
+            "x": 56,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 31,
+            "y": 1110,
+            "w": 322,
+            "h": 433
+          },
+          "anchor": {
+            "x": 192,
+            "y": 1542
+          }
+        },
+        {
+          "name": "crimson_countess_bloodmoon_2",
+          "source": {
+            "x": 440,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 432,
+            "y": 1089,
+            "w": 301,
+            "h": 453
+          },
+          "anchor": {
+            "x": 583,
+            "y": 1541
+          }
+        },
+        {
+          "name": "crimson_countess_bloodmoon_3",
+          "source": {
+            "x": 824,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 765,
+            "y": 1075,
+            "w": 418,
+            "h": 463
+          },
+          "anchor": {
+            "x": 974,
+            "y": 1537
+          }
+        },
+        {
+          "name": "crimson_countess_bloodmoon_4",
+          "source": {
+            "x": 1208,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1202,
+            "y": 1114,
+            "w": 355,
+            "h": 429
+          },
+          "anchor": {
+            "x": 1380,
+            "y": 1542
+          }
+        },
+        {
+          "name": "crimson_countess_bloodmoon_5",
+          "source": {
+            "x": 1592,
+            "y": 1208,
+            "w": 320,
+            "h": 320
+          },
+          "content": {
+            "x": 1602,
+            "y": 1109,
+            "w": 336,
+            "h": 433
+          },
+          "anchor": {
+            "x": 1770,
+            "y": 1541
+          }
+        }
+      ]
+    }
+  ]
+}
