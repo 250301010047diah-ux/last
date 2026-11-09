@@ -47,8 +47,34 @@ class _ActionButtonState extends State<ActionButton> with SingleTickerProviderSt
   late final AnimationController _glow = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 900),
-  )..repeat(reverse: true);
+  );
   bool _pressed = false;
+
+  // Only animate while something actually pulses (full ultimate / tutorial
+  // highlight); an always-running ticker on 5 buttons was a source of lag.
+  bool get _needsPulse =>
+      widget.highlight || (widget.charge != null && widget.charge! >= 1);
+
+  void _syncPulse() {
+    if (_needsPulse) {
+      if (!_glow.isAnimating) _glow.repeat(reverse: true);
+    } else if (_glow.isAnimating) {
+      _glow.stop();
+      _glow.value = 0;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _syncPulse();
+  }
+
+  @override
+  void didUpdateWidget(ActionButton old) {
+    super.didUpdateWidget(old);
+    _syncPulse();
+  }
 
   @override
   void dispose() {
@@ -68,14 +94,17 @@ class _ActionButtonState extends State<ActionButton> with SingleTickerProviderSt
     final ready = !coolingDown && w.enabled && (charge == null || charge >= 1);
     final s = w.size;
 
-    return GestureDetector(
+    // Raw pointer events: fires instantly and never competes with the
+    // drag-to-move gesture in the gesture arena.
+    return RepaintBoundary(
+      child: Listener(
       behavior: HitTestBehavior.opaque,
-      onTapDown: (_) => _setPressed(true),
-      onTapCancel: () => _setPressed(false),
-      onTapUp: (_) {
-        _setPressed(false);
+      onPointerDown: (_) {
+        _setPressed(true);
         w.onTap();
       },
+      onPointerUp: (_) => _setPressed(false),
+      onPointerCancel: (_) => _setPressed(false),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -119,9 +148,7 @@ class _ActionButtonState extends State<ActionButton> with SingleTickerProviderSt
                               w.icon,
                               size: s * 0.42,
                               color: ready ? Colors.white : Colors.white38,
-                              shadows: ready
-                                  ? [Shadow(color: w.color, blurRadius: 12 + 8 * g)]
-                                  : null,
+                              shadows: ready ? [Shadow(color: w.color, blurRadius: 8)] : null,
                             ),
                     ),
                   ),
@@ -142,7 +169,7 @@ class _ActionButtonState extends State<ActionButton> with SingleTickerProviderSt
           ),
         ],
       ),
-    );
+    ));
   }
 }
 
@@ -174,12 +201,18 @@ class _ButtonPainter extends CustomPainter {
 
     // Outer glow when the action is usable.
     if (ready) {
+      // Radial falloff instead of a blur mask filter (much cheaper per frame).
       canvas.drawCircle(
         c,
-        r + 2,
+        r + 6,
         Paint()
-          ..color = color.withValues(alpha: 0.25 + 0.35 * glow + (pressed ? 0.3 : 0))
-          ..maskFilter = MaskFilter.blur(BlurStyle.normal, 6 + 6 * glow),
+          ..shader = RadialGradient(
+            colors: [
+              color.withValues(alpha: 0.55 + 0.3 * glow + (pressed ? 0.15 : 0)),
+              color.withValues(alpha: 0),
+            ],
+            stops: const [0.6, 1],
+          ).createShader(Rect.fromCircle(center: c, radius: r + 6)),
       );
     }
 

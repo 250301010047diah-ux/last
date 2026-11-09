@@ -20,8 +20,7 @@ Color _hex(String hex) {
   return Color(int.parse(h.length == 6 ? 'ff$h' : h, radix: 16));
 }
 
-class RuntuhGame extends FlameGame
-    with PanDetector, TapDetector {
+class RuntuhGame extends FlameGame with PanDetector, TapDetector {
   RuntuhGame({GameAudio? audio}) : audio = audio ?? GameAudioImpl();
 
   final AssetStore store = AssetStore();
@@ -33,6 +32,7 @@ class RuntuhGame extends FlameGame
   CombatWorld? combat;
   int selectedSkin = 0;
   int selectedTheme = 0;
+
   /// Gameplay pause (pause menu). Kept separate from Flame's own [paused],
   /// which stops the engine loop and is toggled by app lifecycle changes.
   bool gamePaused = false;
@@ -58,8 +58,9 @@ class RuntuhGame extends FlameGame
     return (x - ox) / s;
   }
 
-  double _fitScale(Vector2 size) =>
-      (size.x / worldWidth < size.y / worldHeight ? size.x / worldWidth : size.y / worldHeight);
+  double _fitScale(Vector2 size) => (size.x / worldWidth < size.y / worldHeight
+      ? size.x / worldWidth
+      : size.y / worldHeight);
 
   void Function()? notifyUi;
 
@@ -134,6 +135,45 @@ class RuntuhGame extends FlameGame
     notifyUi?.call();
   }
 
+  bool isSkinUnlocked(int index) => save.unlockedSkins.contains(index);
+  bool isAreaUnlocked(int index) => save.unlockedAreas.contains(index);
+
+  /// One-time menu bonus. The flag keeps coins unlimited across restarts.
+  void unlockEverything() {
+    save.unlimitedCoins = true;
+    save.totalCoins = math.max(save.totalCoins, 999999);
+    save.unlockedSkins.addAll(List.generate(SKINS.length, (index) => index));
+    save.unlockedAreas.addAll(List.generate(AREAS.length, (index) => index));
+    save.save();
+    notifyUi?.call();
+  }
+
+  bool spendCoins(int amount) {
+    if (!save.unlimitedCoins && save.totalCoins < amount) return false;
+    if (!save.unlimitedCoins) save.totalCoins -= amount;
+    save.save();
+    notifyUi?.call();
+    return true;
+  }
+
+  bool unlockSelectedSkin() {
+    if (isSkinUnlocked(selectedSkin)) return true;
+    if (!spendCoins(selectedSkin * 100)) return false;
+    save.unlockedSkins.add(selectedSkin);
+    save.save();
+    notifyUi?.call();
+    return true;
+  }
+
+  bool unlockSelectedArea() {
+    if (isAreaUnlocked(selectedTheme)) return true;
+    if (!spendCoins(selectedTheme * 150)) return false;
+    save.unlockedAreas.add(selectedTheme);
+    save.save();
+    notifyUi?.call();
+    return true;
+  }
+
   void _saveCheckpoint(CombatWorld w, {bool pendingUpgrade = false}) {
     save.checkpoint = RunCheckpoint(
       area: w.areaIndex,
@@ -155,7 +195,7 @@ class RuntuhGame extends FlameGame
   /// Bank score and coins of a finished (or abandoned) run.
   void _bankRun(double score, int coins) {
     save.bestScore = math.max(save.bestScore, score.round());
-    save.totalCoins += coins;
+    if (!save.unlimitedCoins) save.totalCoins += coins;
     save.checkpoint = null;
     save.save();
   }
@@ -214,10 +254,17 @@ class RuntuhGame extends FlameGame
     startArea(cp.area.clamp(0, AREAS.length - 1), false, resume: cp);
   }
 
-  Future<void> startArea(int index, bool endless,
-      {RunCheckpoint? resume}) async {
+  Future<void> startArea(
+    int index,
+    bool endless, {
+    RunCheckpoint? resume,
+  }) async {
     // Ignore repeated taps on MULAI/ULANGI/LANJUT while assets load.
     if (phase == GamePhase.loading) return;
+    if (resume == null &&
+        (!isAreaUnlocked(index) || !isSkinUnlocked(selectedSkin))) {
+      return;
+    }
     // Starting fresh abandons any saved run; keep what it had earned.
     final old = save.checkpoint;
     if (resume == null && old != null) _bankRun(old.score, old.runCoins);
@@ -228,10 +275,7 @@ class RuntuhGame extends FlameGame
     final area = AREAS[index];
     final skin = SKINS[selectedSkin];
     try {
-      await Future.wait([
-        store.loadArea(area),
-        store.loadSkin(skin),
-      ]);
+      await Future.wait([store.loadArea(area), store.loadSkin(skin)]);
     } catch (_) {
       // Don't leave the player stuck on the loading spinner.
       quitToMenu();
@@ -271,6 +315,10 @@ class RuntuhGame extends FlameGame
         onVictory: (w) {
           audio.play('win');
           _bankRun(w.score, w.runCoins);
+          if (w.areaIndex + 1 < AREAS.length) {
+            save.unlockedAreas.add(w.areaIndex + 1);
+            save.save();
+          }
           _setPhase(GamePhase.victory);
         },
         onWaveStart: _saveCheckpoint,
@@ -326,8 +374,14 @@ class RuntuhGame extends FlameGame
   static const List<List<String>> tutorialSteps = [
     ['Bergerak', 'Geser jari ke kiri dan ke kanan di layar untuk bergerak.'],
     ['Lompat', 'Ketuk layar atau tekan tombol Lompat.'],
-    ['Menembak', 'Panah menembak otomatis ke atas. Berdiri di bawah monster dan jatuhkan 3 monster!'],
-    ['Melee', 'Monster yang sudah mendarat tidak bisa dipanah. Dekati lalu tekan Melee!'],
+    [
+      'Menembak',
+      'Panah menembak otomatis ke atas. Berdiri di bawah monster dan jatuhkan 3 monster!',
+    ],
+    [
+      'Melee',
+      'Monster yang sudah mendarat tidak bisa dipanah. Dekati lalu tekan Melee!',
+    ],
     ['Skill 1', 'Tekan Skill1 untuk menghantam semua monster di layar.'],
     ['Skill 2', 'Tekan Skill2 untuk memperlambat semua monster.'],
     ['Ultimate', 'Bar ULT sudah penuh! Tekan Ulti untuk serangan pamungkas.'],
@@ -335,7 +389,13 @@ class RuntuhGame extends FlameGame
 
   /// Action button each step asks for (highlighted in the HUD).
   static const List<String?> tutorialButtons = [
-    null, 'Lompat', null, 'Melee', 'Skill1', 'Skill2', 'Ulti'
+    null,
+    'Lompat',
+    null,
+    'Melee',
+    'Skill1',
+    'Skill2',
+    'Ulti',
   ];
 
   /// Theme 1 was started fresh; the first tap begins the practice.
@@ -451,7 +511,9 @@ class RuntuhGame extends FlameGame
         final killed = w.kills - _killsAtStep;
         done = killed >= 3;
         // Keep the lesson going if monsters escaped to the ground.
-        if (!done && w.spawnQueue.isEmpty && alive.every((e) => e.state == 'ground')) {
+        if (!done &&
+            w.spawnQueue.isEmpty &&
+            alive.every((e) => e.state == 'ground')) {
           w.spawnQueue = List.filled(3 - killed, w.area.common);
           w.spawnClock = 0.6;
         }
@@ -567,8 +629,9 @@ class RuntuhGame extends FlameGame
       _renderMenu(canvas);
     } else if (combat == null) {
       canvas.drawRect(
-          Rect.fromLTWH(0, 0, worldWidth, worldHeight),
-          Paint()..color = const Color(0xff101018));
+        Rect.fromLTWH(0, 0, worldWidth, worldHeight),
+        Paint()..color = const Color(0xff101018),
+      );
     } else {
       _renderWorld(canvas, combat!);
     }
@@ -583,18 +646,27 @@ class RuntuhGame extends FlameGame
     if (bg != null) {
       drawCover(canvas, bg, worldWidth, worldHeight);
     } else {
-      canvas.drawRect(Rect.fromLTWH(0, 0, worldWidth, worldHeight),
-          Paint()..color = const Color(0xff101018));
+      canvas.drawRect(
+        Rect.fromLTWH(0, 0, worldWidth, worldHeight),
+        Paint()..color = const Color(0xff101018),
+      );
     }
     // Light tint; the menu overlay adds its own top/bottom gradient for text.
     canvas.drawRect(
-        Rect.fromLTWH(0, 0, worldWidth, worldHeight),
-        Paint()..color = const Color.fromRGBO(0, 0, 0, 0.15));
+      Rect.fromLTWH(0, 0, worldWidth, worldHeight),
+      Paint()..color = const Color.fromRGBO(0, 0, 0, 0.15),
+    );
     final skin = SKINS[selectedSkin];
     final sheet = store.get(skin.moveKey);
     if (sheet != null) {
-      sheet.drawAnim(canvas, 'idle_aim_up', _menuTime, worldWidth / 2,
-          worldHeight * 0.58, 135);
+      sheet.drawAnim(
+        canvas,
+        'idle_aim_up',
+        _menuTime,
+        worldWidth / 2,
+        worldHeight * 0.58,
+        135,
+      );
     }
   }
 
@@ -613,13 +685,20 @@ class RuntuhGame extends FlameGame
     if (bg != null) {
       canvas.drawImageRect(
         bg.image,
-        Rect.fromLTWH(0, 0, bg.image.width.toDouble(), bg.image.height.toDouble()),
+        Rect.fromLTWH(
+          0,
+          0,
+          bg.image.width.toDouble(),
+          bg.image.height.toDouble(),
+        ),
         Rect.fromLTWH(0, 0, w.width, w.height),
         Paint(),
       );
     } else {
-      canvas.drawRect(Rect.fromLTWH(0, 0, w.width, w.height),
-          Paint()..color = _hex(w.area.accent).withValues(alpha: 0.25));
+      canvas.drawRect(
+        Rect.fromLTWH(0, 0, w.width, w.height),
+        Paint()..color = _hex(w.area.accent).withValues(alpha: 0.25),
+      );
     }
 
     // Ground
@@ -627,13 +706,20 @@ class RuntuhGame extends FlameGame
     if (ground != null) {
       canvas.drawImageRect(
         ground.image,
-        Rect.fromLTWH(0, 0, ground.image.width.toDouble(), ground.image.height.toDouble()),
+        Rect.fromLTWH(
+          0,
+          0,
+          ground.image.width.toDouble(),
+          ground.image.height.toDouble(),
+        ),
         Rect.fromLTWH(0, w.groundY, w.width, w.height - w.groundY),
         Paint(),
       );
     } else {
-      canvas.drawRect(Rect.fromLTWH(0, w.groundY, w.width, w.height - w.groundY),
-          Paint()..color = const Color(0xff2a2030));
+      canvas.drawRect(
+        Rect.fromLTWH(0, w.groundY, w.width, w.height - w.groundY),
+        Paint()..color = const Color(0xff2a2030),
+      );
     }
 
     // Enemies
@@ -649,14 +735,20 @@ class RuntuhGame extends FlameGame
 
     // Projectiles
     for (final p in w.projectiles) {
-      canvas.drawCircle(Offset(p.x, p.y), 9,
-          Paint()..color = const Color(0xff9b5de5));
+      canvas.drawCircle(
+        Offset(p.x, p.y),
+        9,
+        Paint()..color = const Color(0xff9b5de5),
+      );
     }
 
     // Coins
     for (final c in w.coins) {
-      canvas.drawCircle(Offset(c.x, c.y), 5,
-          Paint()..color = const Color(0xffffe16a));
+      canvas.drawCircle(
+        Offset(c.x, c.y),
+        5,
+        Paint()..color = const Color(0xffffe16a),
+      );
     }
 
     // Effects
@@ -676,9 +768,9 @@ class RuntuhGame extends FlameGame
               fontWeight: FontWeight.w900,
               foreground: outline
                   ? (Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 3
-                    ..color = const Color(0xff120a1e).withValues(alpha: fade))
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 3
+                      ..color = const Color(0xff120a1e).withValues(alpha: fade))
                   : (Paint()..color = _hex(l.color).withValues(alpha: fade)),
             ),
           ),
@@ -696,7 +788,8 @@ class RuntuhGame extends FlameGame
     if (w.flash > 0) {
       canvas.drawRect(
         Rect.fromLTWH(0, 0, w.width, w.height),
-        Paint()..color = const Color(0xffff3344).withValues(alpha: w.flash * 1.6),
+        Paint()
+          ..color = const Color(0xffff3344).withValues(alpha: w.flash * 1.6),
       );
     }
   }
@@ -709,9 +802,10 @@ class RuntuhGame extends FlameGame
     if (cached != null) return cached;
     final size = s.big ? 30.0 : 19.0;
     final text = '+${s.points}';
-    TextPainter make(String t, TextStyle style) =>
-        TextPainter(text: TextSpan(text: t, style: style), textDirection: TextDirection.ltr)
-          ..layout();
+    TextPainter make(String t, TextStyle style) => TextPainter(
+      text: TextSpan(text: t, style: style),
+      textDirection: TextDirection.ltr,
+    )..layout();
     final painters = [
       make(
         text,
@@ -764,8 +858,8 @@ class RuntuhGame extends FlameGame
       final scale = t < 0.12
           ? 0.4 + (t / 0.12) * 0.9
           : t < 0.24
-              ? 1.3 - ((t - 0.12) / 0.12) * 0.3
-              : 1.0;
+          ? 1.3 - ((t - 0.12) / 0.12) * 0.3
+          : 1.0;
       final alpha = t > 0.65 ? 1 - (t - 0.65) / 0.35 : 1.0;
       final x = s.x;
       final y = s.y - Curves.easeOut.transform(t) * (s.big ? 60 : 42);
@@ -784,13 +878,14 @@ class RuntuhGame extends FlameGame
           final py = y + math.sin(ang) * r * 0.75;
           final d = (s.big ? 4.0 : 3.0) * (1 - k * 0.6);
           canvas.drawPath(
-              Path()
-                ..moveTo(px, py - d)
-                ..lineTo(px + d * 0.6, py)
-                ..lineTo(px, py + d)
-                ..lineTo(px - d * 0.6, py)
-                ..close(),
-              sparkle);
+            Path()
+              ..moveTo(px, py - d)
+              ..lineTo(px + d * 0.6, py)
+              ..lineTo(px, py + d)
+              ..lineTo(px - d * 0.6, py)
+              ..close(),
+            sparkle,
+          );
         }
       }
 
@@ -799,7 +894,9 @@ class RuntuhGame extends FlameGame
       canvas.translate(x, y);
       canvas.scale(scale, scale);
       canvas.saveLayer(
-          null, Paint()..color = Color.fromRGBO(255, 255, 255, alpha.clamp(0.0, 1.0)));
+        null,
+        Paint()..color = Color.fromRGBO(255, 255, 255, alpha.clamp(0.0, 1.0)),
+      );
       final main = painters[1];
       final origin = Offset(-main.width / 2, -main.height / 2);
       painters[0].paint(canvas, origin);
@@ -834,20 +931,25 @@ class RuntuhGame extends FlameGame
     final p = w.player;
     if (p.shootPulse > 0) {
       final k = 1 - p.shootPulse / 0.24; // 0 → 1 over the flash
-      final bow = Offset(p.x, w.groundY - p.jump - math.min(68.0, w.height * 0.1));
+      final bow = Offset(
+        p.x,
+        w.groundY - p.jump - math.min(68.0, w.height * 0.1),
+      );
       canvas.drawCircle(
-          bow,
-          4 + k * 16,
-          Paint()
-            ..color = color.withValues(alpha: (1 - k) * 0.9)
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2.5 * (1 - k) + 0.5);
+        bow,
+        4 + k * 16,
+        Paint()
+          ..color = color.withValues(alpha: (1 - k) * 0.9)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2.5 * (1 - k) + 0.5,
+      );
       canvas.drawCircle(
-          bow,
-          7 * (1 - k),
-          Paint()
-            ..color = core.withValues(alpha: 1 - k)
-            ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4));
+        bow,
+        7 * (1 - k),
+        Paint()
+          ..color = core.withValues(alpha: 1 - k)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+      );
     }
 
     if (w.arrows.isEmpty) return;
@@ -868,6 +970,10 @@ class RuntuhGame extends FlameGame
     for (final a in w.arrows) {
       final x = a.x;
       final y = a.y;
+      canvas.save();
+      canvas.translate(x, y);
+      canvas.rotate(math.atan2(a.vy, a.vx) + math.pi / 2);
+      canvas.translate(-x, -y);
       // Stable per-arrow phase so neighbouring bolts don't animate in sync.
       final seed = (a.hashCode % 97) / 97 * math.pi * 2;
 
@@ -878,23 +984,32 @@ class RuntuhGame extends FlameGame
         ..lineTo(x, y + 78)
         ..close();
       canvas.drawPath(
-          trail,
-          Paint()
-            ..blendMode = BlendMode.plus
-            ..shader = ui.Gradient.linear(Offset(x, y + 8), Offset(x, y + 78),
-                [color.withValues(alpha: 0.75), color.withValues(alpha: 0)]));
+        trail,
+        Paint()
+          ..blendMode = BlendMode.plus
+          ..shader = ui.Gradient.linear(Offset(x, y + 8), Offset(x, y + 78), [
+            color.withValues(alpha: 0.75),
+            color.withValues(alpha: 0),
+          ]),
+      );
 
       // Glow around shaft and head.
       canvas.drawRRect(
-          RRect.fromRectAndRadius(
-              Rect.fromLTWH(x - 5, y - 26, 10, 46), const Radius.circular(5)),
-          glowPaint);
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(x - 5, y - 26, 10, 46),
+          const Radius.circular(5),
+        ),
+        glowPaint,
+      );
 
       // Shaft.
       canvas.drawRRect(
-          RRect.fromRectAndRadius(
-              Rect.fromLTWH(x - 1.6, y - 14, 3.2, 34), const Radius.circular(1.6)),
-          corePaint);
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(x - 1.6, y - 14, 3.2, 34),
+          const Radius.circular(1.6),
+        ),
+        corePaint,
+      );
 
       // Fletching.
       final fins = Path()
@@ -924,12 +1039,14 @@ class RuntuhGame extends FlameGame
       for (int i = 0; i < 2; i++) {
         final ang = t * 14 + seed + i * math.pi;
         final front = math.sin(ang) > 0;
-        sparkPaint.color =
-            (front ? core : color).withValues(alpha: front ? 1 : 0.6);
+        sparkPaint.color = (front ? core : color).withValues(
+          alpha: front ? 1 : 0.6,
+        );
         canvas.drawCircle(
-            Offset(x + math.cos(ang) * 8, y - 14 + math.sin(ang) * 3),
-            front ? 1.8 : 1.2,
-            sparkPaint);
+          Offset(x + math.cos(ang) * 8, y - 14 + math.sin(ang) * 3),
+          front ? 1.8 : 1.2,
+          sparkPaint,
+        );
       }
 
       // Sparks shed along the trail.
@@ -937,11 +1054,15 @@ class RuntuhGame extends FlameGame
         final phase = (t * 3 + seed + k / 3) % 1;
         sparkPaint.color = core.withValues(alpha: 1 - phase);
         canvas.drawCircle(
-            Offset(x + math.sin(seed * 5 + k * 2.1 + t * 9) * (2 + phase * 6),
-                y + 22 + phase * 50),
-            1.6 * (1 - phase) + 0.4,
-            sparkPaint);
+          Offset(
+            x + math.sin(seed * 5 + k * 2.1 + t * 9) * (2 + phase * 6),
+            y + 22 + phase * 50,
+          ),
+          1.6 * (1 - phase) + 0.4,
+          sparkPaint,
+        );
       }
+      canvas.restore();
     }
   }
 
@@ -961,12 +1082,19 @@ class RuntuhGame extends FlameGame
       final flip = e.x > w.player.x;
       sheet.drawAnim(canvas, anim, w.time, e.x, e.y, e.width, flip: flip);
     } else {
-      canvas.drawCircle(Offset(e.x, e.y), e.width * 0.4,
-          Paint()..color = const Color(0xff8844aa));
+      canvas.drawCircle(
+        Offset(e.x, e.y),
+        e.width * 0.4,
+        Paint()..color = const Color(0xff8844aa),
+      );
     }
     if (e.hitPulse > 0) {
-      canvas.drawCircle(Offset(e.x, e.y), e.width * 0.5,
-          Paint()..color = const Color(0xffffffff).withValues(alpha: e.hitPulse * 4));
+      canvas.drawCircle(
+        Offset(e.x, e.y),
+        e.width * 0.5,
+        Paint()
+          ..color = const Color(0xffffffff).withValues(alpha: e.hitPulse * 4),
+      );
     }
   }
 
@@ -976,8 +1104,15 @@ class RuntuhGame extends FlameGame
     final skinCombat = store.get(w.skin.combatKey);
     String anim = 'idle_aim_up';
     if (p.action != null && skinCombat?.anim(p.action!) != null) {
-      skinCombat!.drawAnim(canvas, p.action!, w.time, p.x,
-           w.groundY - p.jump, 130, flip: p.facing < 0);
+      skinCombat!.drawAnim(
+        canvas,
+        p.action!,
+        w.time,
+        p.x,
+        w.groundY - p.jump,
+        130,
+        flip: p.facing < 0,
+      );
       return;
     } else if (p.jump > 0) {
       anim = 'jump_up';
@@ -986,11 +1121,21 @@ class RuntuhGame extends FlameGame
     } else if (p.move != 0) {
       anim = 'run_aim_up';
     }
-    skinMove?.drawAnim(canvas, anim, w.time, p.x,
-        w.groundY - p.jump, 130, flip: p.facing < 0);
+    skinMove?.drawAnim(
+      canvas,
+      anim,
+      w.time,
+      p.x,
+      w.groundY - p.jump,
+      130,
+      flip: p.facing < 0,
+    );
     if (p.invulnerable > 0 && (w.time * 10).floor().isEven) {
-      canvas.drawCircle(Offset(p.x, w.groundY - p.jump - 40), 60,
-          Paint()..color = const Color(0xffffffff).withValues(alpha: 0.18));
+      canvas.drawCircle(
+        Offset(p.x, w.groundY - p.jump - 40),
+        60,
+        Paint()..color = const Color(0xffffffff).withValues(alpha: 0.18),
+      );
     }
   }
 
@@ -998,8 +1143,7 @@ class RuntuhGame extends FlameGame
     if (ef.sheetKey != null) {
       final sheet = store.get(ef.sheetKey!);
       if (sheet?.anim(ef.type) != null) {
-        sheet!.drawAnim(canvas, ef.type, w.time + ef.age, ef.x, ef.y,
-             ef.size);
+        sheet!.drawAnim(canvas, ef.type, w.time + ef.age, ef.x, ef.y, ef.size);
         return;
       }
     }

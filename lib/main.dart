@@ -8,12 +8,16 @@ import 'game/data.dart';
 import 'game/game.dart';
 import 'ui/action_button.dart';
 import 'ui/main_menu.dart';
+import 'ui/ultimate_gauge.dart';
+import 'ui/virtual_joystick.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // The game world is a fixed 360x640 portrait field.
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
@@ -144,25 +148,39 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(game.combat?.area.name ?? '',
-                    style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
+                Text(
+                  game.combat?.area.name ?? '',
+                  style: const TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 if (wave > 1) ...[
                   const SizedBox(height: 4),
-                  Text('Lanjut dari Wave $wave',
-                      style: const TextStyle(fontSize: 15, color: Colors.amber)),
+                  Text(
+                    'Lanjut dari Wave $wave',
+                    style: const TextStyle(fontSize: 15, color: Colors.amber),
+                  ),
                 ],
                 if (game.tutorialPending) ...[
                   const SizedBox(height: 6),
-                  const Text('TUTORIAL LATIHAN',
-                      style: TextStyle(
-                          fontSize: 15,
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.amber)),
+                  const Text(
+                    'TUTORIAL LATIHAN',
+                    style: TextStyle(
+                      fontSize: 15,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.amber,
+                    ),
+                  ),
                 ],
                 const SizedBox(height: 8),
-                Text(game.tutorialPending ? 'TAP UNTUK MULAI LATIHAN' : 'TAP UNTUK BERMAIN',
-                    style: const TextStyle(fontSize: 18, color: Colors.white70)),
+                Text(
+                  game.tutorialPending
+                      ? 'TAP UNTUK MULAI LATIHAN'
+                      : 'TAP UNTUK BERMAIN',
+                  style: const TextStyle(fontSize: 18, color: Colors.white70),
+                ),
               ],
             ),
           ),
@@ -172,21 +190,18 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
       case GamePhase.upgrade:
         return _upgradeScreen();
       case GamePhase.gameover:
-        return _centerCard(
-          title: 'GAME OVER',
-          subtitle: 'Skor: ${game.combat?.score.round() ?? 0}\n'
-              'Skor terbaik: ${game.save.bestScore}',
-          button: 'ULANGI',
-          onTap: () => game.restart(),
-        );
+        return _gameOverScreen();
       case GamePhase.victory:
         return _centerCard(
           title: 'AREA CLEAR',
-          subtitle: 'Skor: ${game.combat?.score.round() ?? 0}\n'
+          subtitle:
+              'Skor: ${game.combat?.score.round() ?? 0}\n'
               'Skor terbaik: ${game.save.bestScore}',
           button: 'LANJUT',
           onTap: () => game.startArea(
-              (game.activeArea + 1).clamp(0, AREAS.length - 1), false),
+            (game.activeArea + 1).clamp(0, AREAS.length - 1),
+            false,
+          ),
         );
       case GamePhase.loading:
         // Boot / area load from the menu: continue the native splash look.
@@ -222,15 +237,25 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             ),
           ),
           const SizedBox(height: 10),
-          const Text('Memuat...',
-              style: TextStyle(fontSize: 12, letterSpacing: 2, color: Colors.white54)),
+          const Text(
+            'Memuat...',
+            style: TextStyle(
+              fontSize: 12,
+              letterSpacing: 2,
+              color: Colors.white54,
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _iconBtn(IconData icon, String tooltip, VoidCallback onTap,
-      {double size = 30}) {
+  Widget _iconBtn(
+    IconData icon,
+    String tooltip,
+    VoidCallback onTap, {
+    double size = 30,
+  }) {
     return IconButton(
       icon: Icon(icon, size: size, color: Colors.white),
       tooltip: tooltip,
@@ -243,10 +268,18 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
       mainAxisSize: MainAxisSize.min,
       children: [
         _iconBtn(Icons.volume_up, 'Volume', () => _openPanel(_Panel.volume)),
-        _iconBtn(Icons.help_outline, 'Tutorial', () => _openPanel(_Panel.tutorial)),
+        _iconBtn(
+          Icons.help_outline,
+          'Tutorial',
+          () => _openPanel(_Panel.tutorial),
+        ),
         if (withPause)
-          _iconBtn(Icons.pause_circle_filled, 'Jeda', () => game.pauseGame(),
-              size: 34),
+          _iconBtn(
+            Icons.pause_circle_filled,
+            'Jeda',
+            () => game.pauseGame(),
+            size: 34,
+          ),
       ],
     );
   }
@@ -264,7 +297,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           ),
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(true),
-            child: Text(okLabel, style: const TextStyle(color: Colors.redAccent)),
+            child: Text(
+              okLabel,
+              style: const TextStyle(color: Colors.redAccent),
+            ),
           ),
         ],
       ),
@@ -273,6 +309,13 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   }
 
   Future<void> _startNewRun() async {
+    if (!game.isSkinUnlocked(game.selectedSkin) ||
+        !game.isAreaUnlocked(game.selectedTheme)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Buka skin dan area yang dipilih dulu.')),
+      );
+      return;
+    }
     if (game.checkpoint != null) {
       final ok = await _confirm(
         'Mulai baru?',
@@ -312,6 +355,137 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     );
   }
 
+  Widget _gameOverScreen() {
+    final score = game.combat?.score.round() ?? 0;
+    final best = game.save.bestScore;
+    final record = score > 0 && score >= best;
+    const gold = Color(0xffe8b04a);
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: RadialGradient(
+          radius: 1.0,
+          colors: [Color(0x99200a14), Color(0xe6050710)],
+        ),
+      ),
+      child: Center(
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: const Duration(milliseconds: 450),
+          curve: Curves.easeOutBack,
+          builder: (context, t, child) => Opacity(
+            opacity: t.clamp(0.0, 1.0),
+            child: Transform.scale(scale: 0.85 + 0.15 * t, child: child),
+          ),
+          child: Container(
+            width: 300,
+            padding: const EdgeInsets.fromLTRB(24, 26, 24, 20),
+            decoration: BoxDecoration(
+              color: const Color(0xdd0c1022),
+              borderRadius: BorderRadius.circular(22),
+              border: Border.all(
+                color: gold.withValues(alpha: 0.8),
+                width: 1.6,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xffff3d5a).withValues(alpha: 0.3),
+                  blurRadius: 30,
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.heart_broken_rounded,
+                  size: 40,
+                  color: Color(0xffff5a6e),
+                ),
+                const SizedBox(height: 6),
+                const Text(
+                  'GAME OVER',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 3,
+                    color: Colors.white,
+                    shadows: [Shadow(color: Color(0xffff3d5a), blurRadius: 14)],
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Wave ${game.combat?.wave ?? 1}',
+                  style: const TextStyle(
+                    fontSize: 13,
+                    letterSpacing: 2,
+                    color: Colors.white54,
+                  ),
+                ),
+                const SizedBox(height: 18),
+                const Text(
+                  'SKOR',
+                  style: TextStyle(fontSize: 11, letterSpacing: 3, color: gold),
+                ),
+                Text(
+                  '$score',
+                  style: const TextStyle(
+                    fontSize: 44,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    height: 1.1,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  record ? 'REKOR BARU!' : 'Terbaik: $best',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: record ? const Color(0xffffc93c) : Colors.white60,
+                  ),
+                ),
+                const SizedBox(height: 22),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => game.restart(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: gold,
+                      foregroundColor: const Color(0xff1a1206),
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    child: const Text(
+                      'ULANGI',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                TextButton(
+                  onPressed: () {
+                    game.audio.play('click');
+                    game.quitToMenu();
+                  },
+                  child: const Text(
+                    'MENU',
+                    style: TextStyle(color: Colors.white70, letterSpacing: 2),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _centerCard({
     required String title,
     required String subtitle,
@@ -324,16 +498,24 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(title, style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold)),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 12),
-            Text(subtitle,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 16, color: Colors.white70)),
+            Text(
+              subtitle,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 16, color: Colors.white70),
+            ),
             const SizedBox(height: 28),
             ElevatedButton(
               onPressed: onTap,
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 14,
+                ),
               ),
               child: Text(button, style: const TextStyle(fontSize: 18)),
             ),
@@ -343,7 +525,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                 game.audio.play('click');
                 game.quitToMenu();
               },
-              child: const Text('MENU', style: TextStyle(color: Colors.white70)),
+              child: const Text(
+                'MENU',
+                style: TextStyle(color: Colors.white70),
+              ),
             ),
           ],
         ),
@@ -354,16 +539,24 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   Widget _playingHud() {
     final w = game.combat!;
     final p = w.player;
+    final compactControls = MediaQuery.sizeOf(context).width < 360;
+    final actionSize = compactControls ? 48.0 : 54.0;
+    final ultimateSize = compactControls ? 54.0 : 62.0;
     return SafeArea(
       child: Stack(
+        fit: StackFit.expand,
         children: [
           // Informational layer (non-interactive)
           IgnorePointer(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 // Top bar
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                   child: Row(
                     children: [
                       Row(
@@ -379,8 +572,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                         ),
                       ),
                       const Spacer(),
-                      Text(game.inTutorial ? 'Latihan' : 'Wave ${w.wave}',
-                          style: const TextStyle(fontSize: 16)),
+                      Text(
+                        game.inTutorial ? 'Latihan' : 'Wave ${w.wave}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
                       const SizedBox(width: 12),
                       // Pops and flashes gold each time the score goes up.
                       TweenAnimationBuilder<double>(
@@ -395,10 +590,16 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w900,
-                              color: Color.lerp(Colors.white, const Color(0xffffc93c), k),
+                              color: Color.lerp(
+                                Colors.white,
+                                const Color(0xffffc93c),
+                                k,
+                              ),
                               shadows: [
                                 Shadow(
-                                  color: const Color(0xffff9a1f).withValues(alpha: k),
+                                  color: const Color(
+                                    0xffff9a1f,
+                                  ).withValues(alpha: k),
                                   blurRadius: 10,
                                 ),
                               ],
@@ -407,63 +608,140 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      const Icon(Icons.monetization_on, size: 16, color: Colors.amber),
-                      Text('${w.runCoins}', style: const TextStyle(fontSize: 16)),
+                      const Icon(
+                        Icons.monetization_on,
+                        size: 16,
+                        color: Colors.amber,
+                      ),
+                      Text(
+                        '${w.runCoins}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                 ),
-                if (game.banner.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Text(game.banner,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-                  ),
-                const Spacer(),
+                const SizedBox(height: 56),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
                       _bar('RAGE', p.rage / 100, Colors.orange),
-                      _bar('ULT', p.ultimate / 100, Colors.cyanAccent),
+                      const SizedBox(height: 6),
+                      UltimateGauge(value: p.ultimate / 100),
                     ],
                   ),
                 ),
-                const SizedBox(height: 112),
+                if (game.banner.isNotEmpty && !game.inTutorial)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Text(
+                      game.banner,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
           // Volume / tutorial / pause (interactive), below the top bar so they
           // don't cover the score.
-          Positioned(top: 36, right: 4, child: _settingsButtons(withPause: true)),
-          if (game.inTutorial)
-            Positioned(top: 88, left: 12, right: 12, child: _tutorialCard()),
-          // Action buttons (interactive)
           Positioned(
-            bottom: 16,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                _actionBtn('Lompat', Icons.keyboard_double_arrow_up_rounded,
-                    const Color(0xff5ee7ff), () => game.combat?.jump(),
-                    enabled: p.jump <= 0.5),
-                _actionBtn('Melee', Icons.flare_rounded, const Color(0xffff8a3d),
-                    () => game.combat?.useAction('melee'),
-                    cooldown: p.meleeCooldown, cooldownMax: p.meleeCooldownMax,
-                    enabled: p.jump <= 10),
-                _actionBtn('Skill1', Icons.bolt_rounded, const Color(0xffffe45c),
-                    () => game.combat?.useAction('skill1'),
-                    cooldown: p.skillOneCooldown, cooldownMax: p.skillOneCooldownMax),
-                _actionBtn('Skill2', Icons.ac_unit_rounded, const Color(0xff8fd8ff),
-                    () => game.combat?.useAction('skill2'),
-                    cooldown: p.skillTwoCooldown, cooldownMax: p.skillTwoCooldownMax),
-                _actionBtn('Ulti', Icons.whatshot_rounded, const Color(0xffff5fd2),
-                    () => game.combat?.useAction('ultimate'),
-                    charge: p.ultimate / 100, size: 66),
-              ],
+            top: 36,
+            right: 4,
+            child: _settingsButtons(withPause: true),
+          ),
+          if (game.inTutorial)
+            Positioned(top: 146, left: 12, right: 12, child: _tutorialCard()),
+          // Left stick moves Asha; arrows auto-aim upward.
+          Positioned(
+            bottom: 24,
+            left: 12,
+            child: VirtualJoystick(
+              label: 'Gerak',
+              color: const Color(0xff5ee7ff),
+              onChanged: (axis) => game.input.moveX = axis.dx,
+            ),
+          ),
+          // Action buttons clustered bottom-right: bottom row Melee/Lompat/
+          // Ulti, top row Skill1/Skill2.
+          Positioned(
+            bottom: 12,
+            right: 10,
+            child: SizedBox(
+              width: 216,
+              height: 172,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    right: 148,
+                    bottom: 0,
+                    child: _actionBtn(
+                      'Melee',
+                      Icons.flare_rounded,
+                      const Color(0xffff8a3d),
+                      () => game.combat?.useAction('melee'),
+                      cooldown: p.meleeCooldown,
+                      cooldownMax: p.meleeCooldownMax,
+                      enabled: p.jump <= 10,
+                      size: actionSize,
+                    ),
+                  ),
+                  Positioned(
+                    right: 76,
+                    bottom: 84,
+                    child: _actionBtn(
+                      'Skill1',
+                      Icons.bolt_rounded,
+                      const Color(0xffffe45c),
+                      () => game.combat?.useAction('skill1'),
+                      cooldown: p.skillOneCooldown,
+                      cooldownMax: p.skillOneCooldownMax,
+                      size: actionSize,
+                    ),
+                  ),
+                  Positioned(
+                    right: 4,
+                    bottom: 94,
+                    child: _actionBtn(
+                      'Skill2',
+                      Icons.ac_unit_rounded,
+                      const Color(0xff8fd8ff),
+                      () => game.combat?.useAction('skill2'),
+                      cooldown: p.skillTwoCooldown,
+                      cooldownMax: p.skillTwoCooldownMax,
+                      size: actionSize,
+                    ),
+                  ),
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: _actionBtn(
+                      'Ulti',
+                      Icons.whatshot_rounded,
+                      const Color(0xffff5fd2),
+                      () => game.combat?.useAction('ultimate'),
+                      charge: p.ultimate / 100,
+                      size: ultimateSize,
+                    ),
+                  ),
+                  Positioned(
+                    right: 78,
+                    bottom: 0,
+                    child: _actionBtn(
+                      'Lompat',
+                      Icons.keyboard_double_arrow_up_rounded,
+                      const Color(0xff5ee7ff),
+                      () => game.combat?.jump(),
+                      enabled: p.jump <= 0.5,
+                      size: actionSize,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -472,54 +750,154 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   }
 
   Widget _pauseMenu() {
+    const gold = Color(0xffe8b04a);
+    final w = game.combat;
     return Container(
-      color: Colors.black54,
+      decoration: const BoxDecoration(
+        gradient: RadialGradient(
+          radius: 1.0,
+          colors: [Color(0x99081028), Color(0xe6050710)],
+        ),
+      ),
       child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('JEDA',
-                style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.white)),
-            const SizedBox(height: 8),
-            _settingsButtons(),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                game.audio.play('click');
-                game.resumeGame();
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 14),
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeOutBack,
+          builder: (context, t, child) => Opacity(
+            opacity: t.clamp(0.0, 1.0),
+            child: Transform.scale(scale: 0.88 + 0.12 * t, child: child),
+          ),
+          child: Container(
+            width: 290,
+            padding: const EdgeInsets.fromLTRB(22, 22, 22, 16),
+            decoration: BoxDecoration(
+              color: const Color(0xdd0c1022),
+              borderRadius: BorderRadius.circular(22),
+              border: Border.all(
+                color: gold.withValues(alpha: 0.8),
+                width: 1.6,
               ),
-              child: const Text('LANJUT', style: TextStyle(fontSize: 18)),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xff5ee7ff).withValues(alpha: 0.22),
+                  blurRadius: 30,
+                ),
+              ],
             ),
-            const SizedBox(height: 14),
-            ElevatedButton(
-              onPressed: () {
-                game.audio.play('click');
-                game.resumeGame();
-                game.restart();
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 14),
-              ),
-              child: const Text('ULANGI', style: TextStyle(fontSize: 18)),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.pause_circle_filled_rounded,
+                  size: 38,
+                  color: Color(0xff5ee7ff),
+                ),
+                const SizedBox(height: 4),
+                const Text(
+                  'JEDA',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 6,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(color: Color(0xff5ee7ff), blurRadius: 14),
+                    ],
+                  ),
+                ),
+                if (w != null)
+                  Text(
+                    '${game.inTutorial ? 'Latihan' : 'Wave ${w.wave}'}'
+                    '  •  Skor ${w.score.round()}',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      letterSpacing: 1.5,
+                      color: Colors.white60,
+                    ),
+                  ),
+                const SizedBox(height: 18),
+                _menuButton(
+                  'LANJUT',
+                  Icons.play_arrow_rounded,
+                  primary: true,
+                  onTap: () {
+                    game.audio.play('click');
+                    game.resumeGame();
+                  },
+                ),
+                const SizedBox(height: 10),
+                _menuButton(
+                  'ULANGI',
+                  Icons.replay_rounded,
+                  onTap: () {
+                    game.audio.play('click');
+                    game.resumeGame();
+                    game.restart();
+                  },
+                ),
+                const SizedBox(height: 10),
+                _menuButton(
+                  'MENU',
+                  Icons.home_rounded,
+                  onTap: () {
+                    game.audio.play('click');
+                    game.quitToMenu();
+                  },
+                ),
+                const SizedBox(height: 10),
+                _settingsButtons(),
+                const Text(
+                  'Progres tersimpan otomatis setiap awal wave',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 11, color: Colors.white38),
+                ),
+              ],
             ),
-            const SizedBox(height: 14),
-            ElevatedButton(
-              onPressed: () {
-                game.audio.play('click');
-                game.quitToMenu();
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 14),
-              ),
-              child: const Text('MENU', style: TextStyle(fontSize: 18)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _menuButton(
+    String label,
+    IconData icon, {
+    required VoidCallback onTap,
+    bool primary = false,
+  }) {
+    const gold = Color(0xffe8b04a);
+    final style = primary
+        ? ElevatedButton.styleFrom(
+            backgroundColor: gold,
+            foregroundColor: const Color(0xff1a1206),
+            padding: const EdgeInsets.symmetric(vertical: 14),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
             ),
-            const SizedBox(height: 8),
-            const Text('Progres tersimpan otomatis setiap awal wave',
-                style: TextStyle(fontSize: 12, color: Colors.white54)),
-          ],
+          )
+        : ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xff141a33),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 13),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+              side: BorderSide(color: gold.withValues(alpha: 0.55)),
+            ),
+          );
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        onPressed: onTap,
+        style: style,
+        icon: Icon(icon, size: 22),
+        label: Text(
+          label,
+          style: const TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 2,
+          ),
         ),
       ),
     );
@@ -527,8 +905,13 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
 
   Widget _volumePanel() {
     final audio = game.audio;
-    Widget row(IconData icon, String label, double value,
-        ValueChanged<double> onChanged, ValueChanged<double> onEnd) {
+    Widget row(
+      IconData icon,
+      String label,
+      double value,
+      ValueChanged<double> onChanged,
+      ValueChanged<double> onEnd,
+    ) {
       return Row(
         children: [
           Icon(value <= 0 ? Icons.volume_off : icon, color: Colors.white70),
@@ -543,7 +926,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           ),
           SizedBox(
             width: 38,
-            child: Text('${(value * 100).round()}%', textAlign: TextAlign.right),
+            child: Text(
+              '${(value * 100).round()}%',
+              textAlign: TextAlign.right,
+            ),
           ),
         ],
       );
@@ -562,18 +948,26 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text('VOLUME',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                const Text(
+                  'VOLUME',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(height: 12),
                 row(Icons.music_note, 'Musik', audio.bgmVolume, (v) {
                   setState(() => audio.setBgmVolume(v));
                 }, game.setBgmVolume),
-                row(Icons.volume_up, 'Efek', audio.sfxVolume, (v) {
-                  setState(() => audio.setSfxVolume(v));
-                }, (v) {
-                  game.setSfxVolume(v);
-                  game.audio.play('click');
-                }),
+                row(
+                  Icons.volume_up,
+                  'Efek',
+                  audio.sfxVolume,
+                  (v) {
+                    setState(() => audio.setSfxVolume(v));
+                  },
+                  (v) {
+                    game.setSfxVolume(v);
+                    game.audio.play('click');
+                  },
+                ),
                 const SizedBox(height: 8),
                 TextButton(onPressed: _closePanel, child: const Text('TUTUP')),
               ],
@@ -597,12 +991,16 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         color: const Color(0xee141420),
         borderRadius: BorderRadius.circular(14),
         border: Border.all(
-          color: done ? Colors.greenAccent : Colors.amber.withValues(alpha: 0.8),
+          color: done
+              ? Colors.greenAccent
+              : Colors.amber.withValues(alpha: 0.8),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: (done ? Colors.greenAccent : Colors.amber).withValues(alpha: 0.25),
+            color: (done ? Colors.greenAccent : Colors.amber).withValues(
+              alpha: 0.25,
+            ),
             blurRadius: 14,
           ),
         ],
@@ -615,7 +1013,11 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
             children: [
               Text(
                 'TUTORIAL ${step + 1}/${RuntuhGame.tutorialSteps.length}',
-                style: const TextStyle(fontSize: 11, letterSpacing: 2, color: Colors.amber),
+                style: const TextStyle(
+                  fontSize: 11,
+                  letterSpacing: 2,
+                  color: Colors.amber,
+                ),
               ),
               const Spacer(),
               TextButton(
@@ -634,7 +1036,11 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           Row(
             children: [
               if (done) ...[
-                const Icon(Icons.check_circle, color: Colors.greenAccent, size: 22),
+                const Icon(
+                  Icons.check_circle,
+                  color: Colors.greenAccent,
+                  size: 22,
+                ),
                 const SizedBox(width: 6),
               ],
               Text(
@@ -650,8 +1056,14 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.only(right: 8),
-            child: Text(info[1],
-                style: const TextStyle(fontSize: 13, color: Colors.white70, height: 1.3)),
+            child: Text(
+              info[1],
+              style: const TextStyle(
+                fontSize: 13,
+                color: Colors.white70,
+                height: 1.3,
+              ),
+            ),
           ),
           if (hasProgress) ...[
             const SizedBox(height: 8),
@@ -685,7 +1097,8 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     double size = 56,
   }) {
     // Highlight the button the current tutorial step is asking for.
-    final wanted = game.inTutorial &&
+    final wanted =
+        game.inTutorial &&
         !game.tutorialStepCompleted &&
         RuntuhGame.tutorialButtons[game.tutorialStep] == label;
     return ActionButton(
@@ -705,7 +1118,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   Widget _bar(String label, double value, Color color) {
     return Row(
       children: [
-        SizedBox(width: 42, child: Text(label, style: const TextStyle(fontSize: 12))),
+        SizedBox(
+          width: 42,
+          child: Text(label, style: const TextStyle(fontSize: 12)),
+        ),
         Expanded(
           child: Container(
             height: 8,
@@ -737,11 +1153,17 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('PILIH UPGRADE', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text(
+              'PILIH UPGRADE',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
             const SizedBox(height: 20),
             for (final u in game.upgradeChoicesList)
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 6,
+                  horizontal: 16,
+                ),
                 child: ElevatedButton(
                   onPressed: () {
                     game.audio.play('select');
@@ -751,7 +1173,10 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
                 ),
               ),
             const SizedBox(height: 12),
-            Text('Skor: ${w.score.round()}', style: const TextStyle(color: Colors.white70)),
+            Text(
+              'Skor: ${w.score.round()}',
+              style: const TextStyle(color: Colors.white70),
+            ),
           ],
         ),
       ),
@@ -767,26 +1192,44 @@ class _TutorialPage {
 }
 
 const List<_TutorialPage> _tutorialPages = [
-  _TutorialPage(Icons.sports_esports, 'Selamat datang!',
-      'Monster berjatuhan dari langit. Tembak mereka sebelum mendarat dan '
-          'menyerangmu dari tanah.'),
-  _TutorialPage(Icons.swipe, 'Bergerak & menembak',
-      'Geser jari ke kiri atau kanan di layar untuk menggerakkan Asha. '
-          'Panah ditembakkan otomatis ke atas.'),
-  _TutorialPage(Icons.arrow_upward, 'Lompat',
-      'Ketuk layar atau tekan tombol Lompat untuk menghindari serangan darat '
-          'dan hantaman musuh. Perhatikan tanda laser sebelum menembak!'),
-  _TutorialPage(Icons.flash_on, 'Skill',
-      'Melee memukul musuh yang sudah mendarat di dekatmu. Skill1 menyerang '
-          'semua musuh, Skill2 memperlambat semuanya. Tunggu cooldown sebelum '
-          'memakainya lagi.'),
-  _TutorialPage(Icons.whatshot, 'Rage & Ulti',
-      'Bar RAGE terisi saat kamu menyerang. Saat penuh, damage dan kecepatanmu '
-          'naik. Saat bar ULT penuh, tekan Ulti untuk menghantam semua musuh.'),
-  _TutorialPage(Icons.emoji_events, 'Wave & Boss',
-      'Setiap area punya 15 wave. Pilih upgrade setelah wave 5 dan 10, lawan '
-          'mini-boss di wave 10 dan boss di wave 15. Progres tersimpan otomatis '
-          'di awal setiap wave.'),
+  _TutorialPage(
+    Icons.sports_esports,
+    'Selamat datang!',
+    'Monster berjatuhan dari langit. Tembak mereka sebelum mendarat dan '
+        'menyerangmu dari tanah.',
+  ),
+  _TutorialPage(
+    Icons.swipe,
+    'Bergerak & menembak',
+    'Joystick kiri menggerakkan Asha. '
+        'Panah ditembakkan otomatis ke atas.',
+  ),
+  _TutorialPage(
+    Icons.arrow_upward,
+    'Lompat',
+    'Ketuk layar atau tekan tombol Lompat untuk menghindari serangan darat '
+        'dan hantaman musuh. Perhatikan tanda laser sebelum menembak!',
+  ),
+  _TutorialPage(
+    Icons.flash_on,
+    'Skill',
+    'Melee memukul musuh yang sudah mendarat di dekatmu. Skill1 menyerang '
+        'semua musuh, Skill2 memperlambat semuanya. Tunggu cooldown sebelum '
+        'memakainya lagi.',
+  ),
+  _TutorialPage(
+    Icons.whatshot,
+    'Rage & Ulti',
+    'Bar RAGE terisi saat kamu menyerang. Saat penuh, damage dan kecepatanmu '
+        'naik. Saat bar ULT penuh, tekan Ulti untuk menghantam semua musuh.',
+  ),
+  _TutorialPage(
+    Icons.emoji_events,
+    'Wave & Boss',
+    'Setiap area punya 15 wave. Pilih upgrade setelah wave 5 dan 10, lawan '
+        'mini-boss di wave 10 dan boss di wave 15. Progres tersimpan otomatis '
+        'di awal setiap wave.',
+  ),
 ];
 
 class TutorialOverlay extends StatefulWidget {
@@ -820,22 +1263,38 @@ class _TutorialOverlayState extends State<TutorialOverlay> {
               children: [
                 Row(
                   children: [
-                    const Text('TUTORIAL',
-                        style: TextStyle(fontSize: 12, color: Colors.white54)),
+                    const Text(
+                      'TUTORIAL',
+                      style: TextStyle(fontSize: 12, color: Colors.white54),
+                    ),
                     const Spacer(),
                     if (!last)
-                      TextButton(onPressed: widget.onDone, child: const Text('LEWATI')),
+                      TextButton(
+                        onPressed: widget.onDone,
+                        child: const Text('LEWATI'),
+                      ),
                   ],
                 ),
                 Icon(page.icon, size: 56, color: Colors.amber),
                 const SizedBox(height: 12),
-                Text(page.title,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                Text(
+                  page.title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 const SizedBox(height: 10),
-                Text(page.body,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 15, color: Colors.white70, height: 1.4)),
+                Text(
+                  page.body,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.white70,
+                    height: 1.4,
+                  ),
+                ),
                 const SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -862,7 +1321,9 @@ class _TutorialOverlayState extends State<TutorialOverlay> {
                       ),
                     const Spacer(),
                     ElevatedButton(
-                      onPressed: last ? widget.onDone : () => setState(() => _page += 1),
+                      onPressed: last
+                          ? widget.onDone
+                          : () => setState(() => _page += 1),
                       child: Text(last ? 'MAIN!' : 'LANJUT'),
                     ),
                   ],

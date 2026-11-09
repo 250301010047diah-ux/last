@@ -1,4 +1,4 @@
-// Port of game js/game/data.js
+// Game data for the Flutter implementation.
 import 'dart:math';
 
 final Random rng = Random();

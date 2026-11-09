@@ -3,6 +3,8 @@ import 'dart:ui' as ui;
 
 import 'package:flame/flame.dart';
 
+import 'atlas_metadata.dart';
+
 class Frame {
   Frame({
     required this.name,
@@ -90,20 +92,20 @@ Future<Sheet> loadSheet(String basename, bool withFrames) async {
   final animMaxHeight = <String, double>{};
   double? refHeight;
   if (withFrames) {
-    final data = await Flame.assets.readJson('json/$basename.frames.json');
+    final data = atlasMetadata[basename];
+    if (data == null) throw StateError('Frame atlas $basename tidak ditemukan');
     for (final f in (data['frames'] as List)) {
       final fr = _parseFrame(f as Map<String, dynamic>);
       frameMap[fr.name] = fr;
       frames.add(fr);
     }
     trimFrameOverlaps(frames);
-    final grid = data['grid'];
-    if (grid is Map && grid['frameHeight'] is num) {
+    if (data['frameHeight'] is num) {
       // Art overhangs its grid cell; 1.15x the cell is a typical content
       // height, so draw sizes stay close to what they were before.
-      refHeight = (grid['frameHeight'] as num).toDouble() * 1.15;
+      refHeight = (data['frameHeight'] as num).toDouble() * 1.15;
     }
-    // The JSON has a flat "frames" list (texture-packer style). Animations are
+    // The atlas has a flat "frames" list (texture-packer style). Animations are
     // derived from the frame-name convention "<animName>_<index>".
     final groups = <String, List<Frame>>{};
     for (final fr in frames) {

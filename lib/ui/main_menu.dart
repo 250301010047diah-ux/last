@@ -59,7 +59,11 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
   Widget _enter(double start, Offset from, Widget child) {
     final curve = CurvedAnimation(
       parent: _intro,
-      curve: Interval(start, (start + 0.6).clamp(0, 1), curve: Curves.easeOutCubic),
+      curve: Interval(
+        start,
+        (start + 0.6).clamp(0, 1),
+        curve: Curves.easeOutCubic,
+      ),
     );
     return FadeTransition(
       opacity: curve,
@@ -78,6 +82,20 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
   void _changeTheme(int delta) {
     game.audio.play('select');
     game.selectTheme(game.selectedTheme + delta);
+  }
+
+  void _unlock(bool skin) {
+    final success = skin
+        ? game.unlockSelectedSkin()
+        : game.unlockSelectedArea();
+    game.audio.play(success ? 'select' : 'click');
+    if (!success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Koin belum cukup untuk membuka pilihan ini.'),
+        ),
+      );
+    }
   }
 
   @override
@@ -111,10 +129,15 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
               child: LayoutBuilder(
                 builder: (context, constraints) => SingleChildScrollView(
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
                     child: IntrinsicHeight(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 18,
+                          vertical: 8,
+                        ),
                         child: _content(accent),
                       ),
                     ),
@@ -168,11 +191,23 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
           height: 98,
           child: _enter(0.35, const Offset(0, 0.3), _skinInfo(skin, accent)),
         ),
+        if (!game.isSkinUnlocked(game.selectedSkin))
+          TextButton.icon(
+            onPressed: () => _unlock(true),
+            icon: const Icon(Icons.lock_open_rounded, size: 16),
+            label: Text('Buka skin · ${game.selectedSkin * 100} koin'),
+          ),
         const SizedBox(height: 10),
         SizedBox(
           height: 88,
           child: _enter(0.45, const Offset(0, 0.3), _themePicker(accent)),
         ),
+        if (!game.isAreaUnlocked(game.selectedTheme))
+          TextButton.icon(
+            onPressed: () => _unlock(false),
+            icon: const Icon(Icons.lock_open_rounded, size: 16),
+            label: Text('Buka area · ${game.selectedTheme * 150} koin'),
+          ),
         const SizedBox(height: 18),
         _enter(
           0.55,
@@ -193,8 +228,15 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
                 const SizedBox(height: 10),
                 _GlowButton(
                   icon: Icons.refresh_rounded,
-                  label: 'MULAI BARU',
-                  colors: [accent.withValues(alpha: 0.25), accent.withValues(alpha: 0.12)],
+                  label:
+                      game.isSkinUnlocked(game.selectedSkin) &&
+                          game.isAreaUnlocked(game.selectedTheme)
+                      ? 'MULAI BARU'
+                      : 'TERKUNCI',
+                  colors: [
+                    accent.withValues(alpha: 0.25),
+                    accent.withValues(alpha: 0.12),
+                  ],
                   borderColor: accent.withValues(alpha: 0.7),
                   compact: true,
                   onTap: widget.onStart,
@@ -203,7 +245,11 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
                 _GlowButton(
                   pulse: _pulse,
                   icon: Icons.play_arrow_rounded,
-                  label: 'MULAI',
+                  label:
+                      game.isSkinUnlocked(game.selectedSkin) &&
+                          game.isAreaUnlocked(game.selectedTheme)
+                      ? 'MULAI'
+                      : 'TERKUNCI',
                   colors: [accent, Color.lerp(accent, Colors.black, 0.45)!],
                   onTap: widget.onStart,
                 ),
@@ -211,6 +257,25 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
           ),
         ),
         const SizedBox(height: 6),
+        _enter(
+          0.65,
+          Offset.zero,
+          TextButton.icon(
+            onPressed: game.save.unlimitedCoins
+                ? null
+                : () {
+                    game.audio.play('click');
+                    game.unlockEverything();
+                  },
+            icon: const Icon(Icons.auto_awesome_rounded, size: 18),
+            label: Text(
+              game.save.unlimitedCoins
+                  ? 'SEMUA TERBUKA · KOIN ∞'
+                  : '999999+ KOIN & BUKA SEMUA',
+            ),
+            style: TextButton.styleFrom(foregroundColor: _cyan),
+          ),
+        ),
         _enter(
           0.7,
           Offset.zero,
@@ -234,15 +299,35 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Icon(Icons.emoji_events_rounded, size: 16, color: Color(0xffffd54f)),
+              const Icon(
+                Icons.emoji_events_rounded,
+                size: 16,
+                color: Color(0xffffd54f),
+              ),
               const SizedBox(width: 6),
-              Text('${game.save.bestScore}',
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+              Text(
+                '${game.save.bestScore}',
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               const SizedBox(width: 14),
-              const Icon(Icons.monetization_on_rounded, size: 16, color: Colors.amber),
+              const Icon(
+                Icons.monetization_on_rounded,
+                size: 16,
+                color: Colors.amber,
+              ),
               const SizedBox(width: 6),
-              Text('${game.save.totalCoins}',
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+              Text(
+                game.save.unlimitedCoins
+                    ? '999999+ ∞'
+                    : '${game.save.totalCoins}',
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ),
@@ -312,8 +397,13 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
         key: ValueKey(game.selectedSkin),
         children: [
           Text(
-            'SKIN ${(game.selectedSkin + 1).toString().padLeft(2, '0')} / ${SKINS.length}',
-            style: const TextStyle(fontSize: 11, letterSpacing: 3, color: Colors.white54),
+            'SKIN ${(game.selectedSkin + 1).toString().padLeft(2, '0')} / ${SKINS.length}'
+            '${game.isSkinUnlocked(game.selectedSkin) ? '' : '  🔒 TERKUNCI'}',
+            style: const TextStyle(
+              fontSize: 11,
+              letterSpacing: 3,
+              color: Colors.white54,
+            ),
           ),
           const SizedBox(height: 4),
           FittedBox(
@@ -335,12 +425,18 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
             decoration: BoxDecoration(
               color: Colors.cyanAccent.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.5)),
+              border: Border.all(
+                color: Colors.cyanAccent.withValues(alpha: 0.5),
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.bolt_rounded, size: 14, color: Colors.cyanAccent),
+                const Icon(
+                  Icons.bolt_rounded,
+                  size: 14,
+                  color: Colors.cyanAccent,
+                ),
                 const SizedBox(width: 4),
                 Flexible(
                   child: Text(
@@ -348,7 +444,10 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 12, color: Colors.cyanAccent),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.cyanAccent,
+                    ),
                   ),
                 ),
               ],
@@ -378,9 +477,13 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
                 key: ValueKey(game.selectedTheme),
                 children: [
                   Text(
-                    'TEMA  ${(game.selectedTheme + 1).toString().padLeft(2, '0')} / ${AREAS.length}',
+                    'TEMA  ${(game.selectedTheme + 1).toString().padLeft(2, '0')} / ${AREAS.length}'
+                    '${game.isAreaUnlocked(game.selectedTheme) ? '' : '  🔒 TERKUNCI'}',
                     style: TextStyle(
-                        fontSize: 10, letterSpacing: 2.5, color: accent.withValues(alpha: 0.9)),
+                      fontSize: 10,
+                      letterSpacing: 2.5,
+                      color: accent.withValues(alpha: 0.9),
+                    ),
                   ),
                   const SizedBox(height: 3),
                   Text(
@@ -388,7 +491,10 @@ class _MainMenuState extends State<MainMenu> with TickerProviderStateMixin {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -473,7 +579,11 @@ class _SkinArrowState extends State<_SkinArrow> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Color.lerp(accent, Colors.black, 0.55)!.withValues(alpha: 0.9),
+                        Color.lerp(
+                          accent,
+                          Colors.black,
+                          0.55,
+                        )!.withValues(alpha: 0.9),
                         Colors.black.withValues(alpha: 0.75),
                         accent.withValues(alpha: 0.45 + 0.25 * glow),
                       ],
@@ -502,7 +612,9 @@ class _SkinArrowState extends State<_SkinArrow> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: accent.withValues(alpha: 0.25 + 0.2 * glow),
+                              color: accent.withValues(
+                                alpha: 0.25 + 0.2 * glow,
+                              ),
                             ),
                           ),
                         ),
@@ -557,7 +669,9 @@ class _Glass extends StatelessWidget {
           color: Colors.white.withValues(alpha: 0.08),
           shape: RoundedRectangleBorder(
             borderRadius: shape,
-            side: BorderSide(color: borderColor ?? Colors.white.withValues(alpha: 0.18)),
+            side: BorderSide(
+              color: borderColor ?? Colors.white.withValues(alpha: 0.18),
+            ),
           ),
           child: InkWell(
             onTap: onTap,
@@ -606,7 +720,9 @@ class _GlowButton extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: colors,
           ),
-          border: Border.all(color: borderColor ?? Colors.white.withValues(alpha: 0.35)),
+          border: Border.all(
+            color: borderColor ?? Colors.white.withValues(alpha: 0.35),
+          ),
           boxShadow: pulse == null
               ? null
               : [
@@ -623,7 +739,10 @@ class _GlowButton extends StatelessWidget {
             borderRadius: shape,
             onTap: onTap,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: compact ? 11 : 14, horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                vertical: compact ? 11 : 14,
+                horizontal: 16,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -640,7 +759,9 @@ class _GlowButton extends StatelessWidget {
                             fontWeight: FontWeight.w900,
                             letterSpacing: 3,
                             color: Colors.white,
-                            shadows: const [Shadow(color: Colors.black45, blurRadius: 4)],
+                            shadows: const [
+                              Shadow(color: Colors.black45, blurRadius: 4),
+                            ],
                           ),
                         ),
                         if (sublabel != null)
@@ -648,7 +769,10 @@ class _GlowButton extends StatelessWidget {
                             sublabel!,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontSize: 11, color: Colors.white),
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: Colors.white,
+                            ),
                           ),
                       ],
                     ),

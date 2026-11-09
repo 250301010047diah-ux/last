@@ -1,5 +1,4 @@
-// GENERATED from game js/assets.json (key -> image basename).
-// Do not edit by hand.
+// Flutter asset keys mapped to image basenames.
 
 const Map<String, String> assetManifest = {
   "BG_AREA_5": "bg_area_5",

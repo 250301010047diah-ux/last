@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 int _int(dynamic v, int fallback) => v is num ? v.toInt() : fallback;
-double _double(dynamic v, double fallback) => v is num ? v.toDouble() : fallback;
+double _double(dynamic v, double fallback) =>
+    v is num ? v.toDouble() : fallback;
 
 /// Snapshot of a run taken at the start of a wave (or when the upgrade
 /// screen opens), so a run can be continued after the app is killed.
@@ -39,18 +40,18 @@ class RunCheckpoint {
   final bool pendingUpgrade;
 
   Map<String, dynamic> toJson() => {
-        'area': area,
-        'skin': skin,
-        'wave': wave,
-        'score': score,
-        'runCoins': runCoins,
-        'hp': hp,
-        'ultimate': ultimate,
-        'rage': rage,
-        'revived': revived,
-        'levels': levels,
-        'pendingUpgrade': pendingUpgrade,
-      };
+    'area': area,
+    'skin': skin,
+    'wave': wave,
+    'score': score,
+    'runCoins': runCoins,
+    'hp': hp,
+    'ultimate': ultimate,
+    'rage': rage,
+    'revived': revived,
+    'levels': levels,
+    'pendingUpgrade': pendingUpgrade,
+  };
 
   static RunCheckpoint? fromJson(dynamic m) {
     if (m is! Map) return null;
@@ -93,6 +94,9 @@ class SaveStore {
   double sfxVolume = 0.55;
   int bestScore = 0;
   int totalCoins = 0;
+  bool unlimitedCoins = false;
+  final Set<int> unlockedSkins = {0};
+  final Set<int> unlockedAreas = {0};
   RunCheckpoint? checkpoint;
 
   Future<void> load() async {
@@ -109,6 +113,17 @@ class SaveStore {
       sfxVolume = _double(m['sfxVolume'], sfxVolume).clamp(0.0, 1.0);
       bestScore = _int(m['bestScore'], 0);
       totalCoins = _int(m['totalCoins'], 0);
+      unlimitedCoins = m['unlimitedCoins'] == true;
+      unlockedSkins.addAll(
+        (m['unlockedSkins'] as List? ?? const []).whereType<num>().map(
+          (value) => value.toInt(),
+        ),
+      );
+      unlockedAreas.addAll(
+        (m['unlockedAreas'] as List? ?? const []).whereType<num>().map(
+          (value) => value.toInt(),
+        ),
+      );
       checkpoint = RunCheckpoint.fromJson(m['checkpoint']);
     } catch (_) {
       // Corrupt or unavailable storage: start with defaults.
@@ -126,6 +141,9 @@ class SaveStore {
       'sfxVolume': sfxVolume,
       'bestScore': bestScore,
       'totalCoins': totalCoins,
+      'unlimitedCoins': unlimitedCoins,
+      'unlockedSkins': unlockedSkins.toList(),
+      'unlockedAreas': unlockedAreas.toList(),
       'checkpoint': checkpoint?.toJson(),
     });
     unawaited(prefs.setString(_key, data).catchError((_) => false));
@@ -139,6 +157,13 @@ class SaveStore {
     selectedTheme = 0;
     bestScore = 0;
     totalCoins = 0;
+    unlimitedCoins = false;
+    unlockedSkins
+      ..clear()
+      ..add(0);
+    unlockedAreas
+      ..clear()
+      ..add(0);
     checkpoint = null;
     save();
   }
